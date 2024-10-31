@@ -3,7 +3,7 @@
 ![SKIT Emblem](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
-#### `DESCRIPTION` &ensp; An automated internals question paper generation platform.
+#### `DESCRIPTION` &ensp; An automation-driven assessment creation and management platform.
 
 #### `PROJECT DURATION (PROJECTED)` &ensp; June 2023 - December 2024 (18 Months)
 
