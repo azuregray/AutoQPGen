@@ -1,0 +1,138 @@
+/* General Styles */
+body {
+    font-family: 'SF Mono', sans-serif;
+    background-color: #f4f4f4;
+    margin: 10rem;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+    max-width: 120px;
+    background-color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Main Container */
+.container {
+    width: 80%;
+    margin: auto;
+    padding-top: 80px; /* Ensure space for the fixed header */
+    padding-bottom: 60px; /* Ensure space for the footer */
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"],
+form button {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #218838;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.buttons .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    color: #fff;
+    background: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.buttons .btn:hover {
+    background: #0056b3;
+}
+
+tablediv {
+    width: 100%;
+}
+
+table {
+    font-family: "SF Mono", sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid black;
+}
+/* .form_input_text{
+} */

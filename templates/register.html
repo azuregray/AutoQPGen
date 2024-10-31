@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        <h1>Register</h1>
+    </header>
+    <div class="container">
+        <form action="{{ url_for('register') }}" method="post" enctype="multipart/form-data">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="AIML">Artificial Intelligence and Machine Learning</option>
+                <option value="CSE">Computer Science Engineering</option>
+                <option value="ISE">Information Science Engineering</option>
+                <option value="MECH">Mechanical Engineering</option>
+                <option value="CIVIL">Civil Engineering</option>
+            </select>
+            
+            <label for="priority">Priority Level:</label>
+            <select id="priority" name="priority" required>
+                <option value="STAFF">Teaching staff</option>
+                <option value="HOD">Head of the department</option>
+                <option value="PRINCIPAL">Principal</option>
+            </select>
+
+            <label for="signature">Digital Signature</label>
+            <input type="file" id="signature" name="signature" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
+    </footer>
+</body>
+</html>

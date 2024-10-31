@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Design</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        <h1>Create New Question Paper</h1>
+    </header>
+    <div class="container">
+        <form action="{{ url_for('create_paper') }}" method="post" enctype="multipart/form-data">
+            <label for="question_bank">Upload Question Bank</label>
+            <input type="file" id="question_bank" name="question_bank" required>
+            <button type="submit">Generate Paper</button>
+        </form>
+        {% if faculty_name and subject_name and subject_code and semester and questions and co_list and levels %}
+            <h2 id="generated_info">Question Paper design: </h2>
+            <form action="{{ url_for('download_pdf') }}" method="post">
+                <div class="header">
+                    <h1 style="text-align:center;">CIE - <input type="text" name="cie_number" value="01" required></h1>
+                </div>
+                <div class="tablediv">
+                    <table id="generated_table">
+                        <tr>
+                            <td colspan="1">Dept: <input type="text" name="dept_name" value="AIML" required></td>
+                            <td colspan="1">Sem / Div: <input type="text" name="semester" value="{{ semester }}" required></td>
+                            <td colspan="3">Course: <input type="text" name="course_name" value="{{ subject_name }}" required></td>
+                            <td colspan="1">Elective: <input type="text" name="elective_choice" value="NO" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">Date: <input type="text" name="date" value="" required></td>
+                            <td colspan="1">Time: <input type="text" name="timings" value="" required></td>
+                            <td colspan="3">C Code: <input type="text" name="course_code" value="{{ subject_code }}" required></td>
+                            <td colspan="1">Max Marks: <input type="text" name="max_marks" value="40" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text"name="mandatory_count" value="TWO" required> full questions. All questions carry 20 marks.</td>
+                        </tr>
+                        <tr class="column_headers">
+                            <td colspan="1" style="text-align:center; font-weight=bold;">QNo.</td>
+                            <td colspan="2" style="text-align:center; font-weight=bold;">Questions</td>
+                            <td colspan="1" style="text-align:center; font-weight=bold;">CO</td>
+                            <td colspan="1" style="text-align:center; font-weight=bold;">Level</td>
+                            <td colspan="1" style="text-align:center; font-weight=bold;">Marks</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="2" style="text-align:center;">1</td>
+                            <td colspan="2"><input type="text" name="q1a" value="a. {{ questions[0] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co1a" value="{{ co_list[0] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl1a" value="{{ levels[0] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks1a" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="text" name="q1b" value="b. {{ questions[1] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co1b" value="{{ co_list[1] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl1b" value="{{ levels[1] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks1b" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;" colspan="6">OR</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="2" style="text-align:center;">2</td>
+                            <td colspan="2"><input type="text" name="q2a" value="a. {{ questions[2] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co2a" value="{{ co_list[2] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl2a" value="{{ levels[2] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks2a" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="text" name="q2b" value="b. {{ questions[3] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co2b" value="{{ co_list[3] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl2b" value="{{ levels[3] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks2b" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="2" style="text-align:center;">3</td>
+                            <td colspan="2"><input type="text" name="q3a" value="a. {{ questions[4] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co3a" value="{{ co_list[4] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl3a" value="{{ levels[4] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks3a" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="text" name="q3b" value="b. {{ questions[5] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co3b" value="{{ co_list[5] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl3b" value="{{ levels[5] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks3b" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;" colspan="6">OR</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="2" style="text-align:center;">4</td>
+                            <td colspan="2"><input type="text" name="q4a" value="a. {{ questions[6] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co4a" value="{{ co_list[6] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl4a" value="{{ levels[6] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks4a" value="10" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="text" name="q4b" value="b. {{ questions[7] }}" style="width: 600px; height: 50px" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="co4b" value="{{ co_list[7] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="lvl4b" value="{{ levels[7] }}" required></td>
+                            <td colspan="1" style="text-align:center;"><input type="text" name="marks4b" value="10" required></td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="submit" class="btn">Download PDF</button>
+            </form>
+            <form action="{{ url_for('send_for_approval') }}" method="post">
+                <button type="submit" class="btn">Send for Approval</button>
+            </form>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
+    </footer>
+</body>
+</html>

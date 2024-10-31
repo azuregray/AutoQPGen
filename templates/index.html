@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoQPGen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        <h1>Welcome!</h1>
+    </header>
+    <div class="container">
+        <div class="buttons">
+            <a href="{{ url_for('register') }}" class="btn">Register</a>
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
+    </footer>
+</body>
+</html>
