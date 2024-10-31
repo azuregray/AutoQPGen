@@ -3,9 +3,9 @@
 ![SKIT Emblem](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
-#### `Description` &ensp; An automated internals question paper generation platform.
+#### `DESCRIPTION` &ensp; An automated internals question paper generation platform.
 
-> **Project Duration (PROJECTED) - `May 2023 - December 2024 (18 Months)`**
+> **Project Duration (PROJECTED) - `JUNE 2023 - DECEMBER 2024 (18 Months)`**
 
 > **Department of AI & ML - Sri Krishna Insititute of Technology - `Final Year Project 2021 Batch`**
 
