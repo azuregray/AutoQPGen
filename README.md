@@ -1,6 +1,6 @@
 # **A u t o &emsp; Q P &emsp; G e n**
 
-![KMTL Official Branding](https://raw.githubusercontent.com/azuregray/KMTL-WorkToolsSearch/main/Assets/BrandLogo-KMTL.jpeg)
+![KMTL Official Branding](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/skit_logo.jpeg)
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
 #### `Description` &ensp; An automated internals question paper generation platform.
