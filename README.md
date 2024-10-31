@@ -5,20 +5,18 @@
 
 #### `Description` &ensp; An automated internals question paper generation platform.
 
-> **Project Duration - `April - August 2024 (6 Months)`**
+> **Project Duration (PROJECTED) - `May 2023 - December 2024 (18 Months)`**
 
-> **Department of AI & ML - Sri Krishna Insititute of Technology - `6th SEMESTER 2021 Batch`**
+> **Department of AI & ML - Sri Krishna Insititute of Technology - `Final Year Project 2021 Batch`**
 
-> **`Unity is Strength`** Leading such a team is an opportunity not to miss:
+> **D A R S H A N &ensp; S &ensp; `PROJECT MANAGER & TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
 
-> **D A R S H A N &ensp; S &ensp; `PROJECT MANAGER & TEAM LEAD` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
+> **C H E T H A N &ensp; G O W D A &ensp; M &ensp; V
 
-> **V E N U &ensp; G O P A L &ensp; S &ensp; R &ensp; `PRIMARY DEVELOPER` >> [**`GITHUB`**](https://github.com/srvenu) | [**`LINKEDIN`**](https://www.linkedin.com/in/venu-s-raj)**
-
-> **D A R S H A N &ensp; S A D A S H I V A  &ensp; `INTERFACE DESIGNER & SECONDARY DEVELOPER` >> [**`GITHUB`**](https://github.com/darshansadashiva) | [**`LINKEDIN`**](http://linkedin.com/in/darshansadashiva)**
+> **D A N U S H &ensp; V
 
 ---
-## **`INSTALLATION`**
+## **`INSTALLATION & USAGE`**
 - **How to use the App**
 > Step 01: Please use our [**`LATEST RELEASE PAGE`**](https://github.com/azuregray/KMTL-WorkToolsSearch/releases/latest) and find **Kennametal.WorkToolsSearch.exe**
 
@@ -31,7 +29,7 @@
 
 Assuming you are inside the cloned folder, just run this in Terminal `Interpreter: PowerShell`:
 ```
-python -m pip install -r requirements.txt; python ./main.py
+python -m pip install -r requirements.txt; python ./app.py
 ```
 
 > Please note that this App is currently intended to run on `WINDOWS` OS only.
@@ -41,6 +39,6 @@ python -m pip install -r requirements.txt; python ./main.py
 ---
 - **LINK TO `THE ORIGINAL REPOSITORY`**
 
-> **https://github.com/azuregray/KMTL-WorkToolsSearch/**
+> **https://github.com/azuregray/AutoQPGen/**
 
 ---
