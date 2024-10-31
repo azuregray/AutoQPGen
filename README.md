@@ -5,9 +5,9 @@
 
 #### `DESCRIPTION` &ensp; An automated internals question paper generation platform.
 
-#### `PROJECT DURATION (PROJECTED)` &ensp; JUNE 2023 - DECEMBER 2024 (18 Months)
+#### `PROJECT DURATION (PROJECTED)` &ensp; June 2023 - December 2024 (18 Months)
 
-> **Department of AI & ML - Sri Krishna Insititute of Technology - `Final Year Project 2021 Batch`**
+> **Department of AI & ML - `Final Year Project 2021 Batch`**
 
 > **`1KT21AI014` D A R S H A N &ensp; S &ensp; `TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
 
