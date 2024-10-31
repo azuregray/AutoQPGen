@@ -41,11 +41,11 @@ https://127.0.0.1:5000
 > ⚠️ **Please note that this App is currently intended to run on `WINDOWS / PC` only.**
 
 ---
-## **For respected Contributors:**
+## **FOR RESPECTED CONTRIBUTORS**
 > Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) ✅
 ---
 
-- **LINK TO `THE ORIGINAL REPOSITORY`** 💙
+## **LINK TO `THE ORIGINAL REPOSITORY`** 💙
 
 > **https://github.com/azuregray/AutoQPGen/**
 
