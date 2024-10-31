@@ -9,7 +9,7 @@
 
 > **Department of AI & ML - Sri Krishna Insititute of Technology - `Final Year Project 2021 Batch`**
 
-> **`1KT21AI014` D A R S H A N &ensp; S &ensp; `PROJECT MANAGER & TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
+> **`1KT21AI014` D A R S H A N &ensp; S &ensp; `TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
 
 > **`1KT21AI011` C H E T H A N &ensp; G O W D A &ensp; M &ensp; V >> [**`LINKEDIN`**](https://www.linkedin.com/in/chethan-gowda-m-v-98a2a0229)**
 
@@ -41,11 +41,11 @@ https://127.0.0.1:5000
 > ⚠️ **Please note that this App is currently intended to run on `WINDOWS / PC` only.**
 
 ---
-## **FOR RESPECTED CONTRIBUTORS**
+## **`FOR RESPECTED CONTRIBUTORS`**
 > Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) ✅
 ---
 
-## **LINK TO `THE ORIGINAL REPOSITORY`** 💙
+## **`LINK TO THE ORIGINAL REPOSITORY`** 💙
 
 > **https://github.com/azuregray/AutoQPGen/**
 
