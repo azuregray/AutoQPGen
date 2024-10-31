@@ -17,35 +17,35 @@
 
 ---
 ## **`DEPLOYMENT & USAGE`**
-> Step 01: Please clone the repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
+> 1️⃣ **Step 01**: Please clone the repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
 
-> Step 02: Extract the downloaded `AutoQPGen-main.zip` file into its folder and move into the same.
+> 2️⃣ **Step 02**: Extract the downloaded `AutoQPGen-main.zip` file into its folder and move into the same.
 
-> Step 03: Once you are in the root folder, Install the requirements. Take the help of `requirements.txt`, just run this in Terminal `Interpreter: PowerShell`:
+> 3️⃣ **Step 03**: Once you are in the root folder, Install the requirements. Take the help of `requirements.txt`, just run this in Terminal `Interpreter: PowerShell`:
 ```
 python -m pip install -r requirements.txt
 ```
 
-> Step 04: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
+> 4️⃣ **Step 04**: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
 ```
 python ./app.py
 ```
 
-> Step 05: After running the command in `Step 04`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted:
+> 5️⃣ **Step 05**: After running the command in `Step 04`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted:
 For Example:
 ```
 https://127.0.0.1:5000
 ```
 
 
-> Please note that this App is currently intended to run on `WINDOWS / PC` only.
+> ⚠️ **Please note that this App is currently intended to run on `WINDOWS / PC` only.**
 
 ---
 ## **For respected Contributors:**
-> Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+> Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) ✅
 ---
 
-- **LINK TO `THE ORIGINAL REPOSITORY`**
+- **LINK TO `THE ORIGINAL REPOSITORY`** 💙
 
 > **https://github.com/azuregray/AutoQPGen/**
 
