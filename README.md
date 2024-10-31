@@ -1,4 +1,4 @@
-# **A u t o &emsp; Q P &emsp; G e n**
+# **A U T O &emsp; Q P &emsp; G E N**
 
 ![SKIT Emblem](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
@@ -9,11 +9,11 @@
 
 > **Department of AI & ML - Sri Krishna Insititute of Technology - `Final Year Project 2021 Batch`**
 
-> **D A R S H A N &ensp; S &ensp; `PROJECT MANAGER & TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
+> **D A R S H A N &ensp; S &ensp; `PROJECT MANAGER & TEAM LEADER` `1KT21AI014` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
 
-> **C H E T H A N &ensp; G O W D A &ensp; M &ensp; V
+> **C H E T H A N &ensp; G O W D A &ensp; M &ensp; V `1KT21AI011` **
 
-> **D A N U S H &ensp; V
+> **D A N U S H &ensp; V `1KT21AI013` **
 
 ---
 ## **`INSTALLATION & USAGE`**
