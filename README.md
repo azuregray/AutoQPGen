@@ -36,10 +36,6 @@ For example:
 ```
 https://127.0.0.1:5000
 ```
-
-
-> ⚠️ **Please note that this App is currently intended to run on `WINDOWS / PC` only.**
-
 ---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰
 > Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
