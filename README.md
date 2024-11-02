@@ -17,7 +17,7 @@
 
 ---
 ## **`DEPLOYMENT & USAGE`**
-> 1️⃣ **Step 01**: Please clone the repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
+> 1️⃣ **Step 01**: Please visit the Original Repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
 
 > 2️⃣ **Step 02**: Extract the downloaded `AutoQPGen-main.zip` file into its folder and move into the same.
 
