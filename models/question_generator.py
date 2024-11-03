@@ -202,6 +202,24 @@ def extract_questions_from_pdf(pdf_path):
     return {key: value for key, value in locals().items() if key in ['faculty_name', 'subject_name', 'subject_code', 'semester', 'final_8questions', 'final_8co_list', 'final_8levels_list']}
 
 
+# WARNING ----------------------- 
+# This question_generator.py will now return pure data extracted from the input Question Bank itself, and
+# NOT the required newly rephrased questions using ML (Gemini-Pro in this case).
+# This is due to the fact that Gemini API free usage has restrictions on daily prompts limit.
+# So using that during development can use up the day's limit before you even notice.
+# Hence, THE BELOW GENAI FUNTION USING THE ABOVE MENTIONED FUNCTIONALITY HAS BEEN GREYED OUT.
+
+# IMPORTANT :: REMEMBER TO NEVER PUSH THE PRIVATE GEMINI API KEY TO OPEN-SOURCE!!
+# If done so, please delete the API key immediately as soon as you realize at any of the below links:
+# Web Link for Google AI Studio - API Key Dashboard :: https://aistudio.google.com/app/apikey
+# Web Link for Google Cloud Console - API Credentials :: https://console.cloud.google.com/apis/credentials
+#---------------------------------------------------------------------------------------------------
+
+
+# NOTE FOR DEVELOPERS: Use print(os.environ["GEMINI_API_KEY"]) to
+# see the privately stored environment variable "GEMINI_API_KEY" on the deployment machine.
+
+
 # def generate_new_questions(pdf_path):
 #     question_bank = extract_questions_from_pdf(pdf_path)
 #     if not question_bank:
