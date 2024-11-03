@@ -1,0 +1,12 @@
+pdfkit
+os
+fitz
+random
+PyPDF2
+flask
+pathlib
+fpdf
+sqlite3
+datetime
+secrets
+shutil

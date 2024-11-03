@@ -26,20 +26,16 @@
 python -m pip install -r requirements.txt
 ```
 
-> 4️⃣ **Step 04**: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
+> 4️⃣ **Step 04**: Install `wkhtmltopdf` from their Downloads page - [**`wkhtmltox`**](https://wkhtmltopdf.org/downloads.html/) and download the appropriate installer (Windows 64-bit for Windows machines and so on). For windows, the downloaded file must look something like `wkhtmltox-...-win64.exe` 
+
+> 5️⃣ **Step 05**: After installing the WKHTMLTOX setup file in Step 04, you need to add its binaries to System PATH. Normally this should happen automatically. Just to confirm.
+
+> 6️⃣ **Step 06**: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
 ```
 python ./app.py
 ```
 
-> 5️⃣ **Step 05**: After running the command in `Step 04`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted.
-For example:
-```
-https://127.0.0.1:5000
-```
-
-
-> ⚠️ **Please note that this App is currently intended to run on `WINDOWS / PC` only.**
-
+> 7️⃣ **Step 07**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`. For example: `https://127.0.0.1:5000`
 ---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰
 > Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
