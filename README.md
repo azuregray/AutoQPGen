@@ -11,13 +11,13 @@
 
 > **`1KT21AI014` D A R S H A N &ensp; S &ensp; `TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
 
-> **`1KT21AI011` C H E T H A N &ensp; G O W D A &ensp; M &ensp; V >> [**`LINKEDIN`**](https://www.linkedin.com/in/chethan-gowda-m-v-98a2a0229)**
+> **`1KT21AI011` C H E T H A N &ensp; G O W D A &ensp; M &ensp; V >> [**`GITHUB`**](https://github.com/chethangowdamv) | [**`LINKEDIN`**](https://www.linkedin.com/in/chethan-gowda-m-v-98a2a0229)**
 
-> **`1KT21AI013` D A N U S H &ensp; V >> [**`LINKEDIN`**](https://www.linkedin.com/in/masterofseas)**
+> **`1KT21AI013` D A N U S H &ensp; V >> [**`GITHUB`**](https://github.com/DANUSHv1) | [**`LINKEDIN`**](https://www.linkedin.com/in/masterofseas)**
 
 ---
 ## **`DEPLOYMENT & USAGE`**
-> 1️⃣ **Step 01**: Please clone the repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
+> 1️⃣ **Step 01**: Please visit the Original Repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
 
 > 2️⃣ **Step 02**: Extract the downloaded `AutoQPGen-main.zip` file into its folder and move into the same.
 
