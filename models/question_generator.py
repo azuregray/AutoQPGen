@@ -39,7 +39,7 @@ def extract_questions_from_pdf(pdf_path):
     pdf_pagecount = pdf_document.page_count
 
     print("Total number of pages: ", pdf_pagecount)
-    print('\n\n')
+    print('\n')
 
     rawdata_prefilter = []
 
