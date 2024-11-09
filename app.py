@@ -6,10 +6,12 @@ from fpdf import FPDF
 import sqlite3
 import os
 from datetime import datetime
-import secrets, random
+import secrets
+import random
+import kickstarter
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'no-cookie-implementation-yet'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 global global_user_id
 global global_username
@@ -24,72 +26,6 @@ global_department = ""
 global_priolvl = ""
 global_digisign = ""
 global_paper_id = 0
-
-def init_db():
-    with sqlite3.connect('database.db') as conn:
-        cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                userid TEXT UNIQUE NOT NULL,
-                username TEXT UNIQUE NOT NULL,
-                password TEXT NOT NULL,
-                department TEXT NOT NULL,
-                priolvl TEXT NOT NULL,
-                signature_path TEXT NOT NULL
-            )
-        ''')
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS papers (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER,
-                paper_id INTEGER,
-                status TEXT,
-                cie_number TEXT,
-                dept_name TEXT,
-                semester TEXT,
-                course_name TEXT,
-                elective_choice TEXT,
-                date TEXT,
-                time TEXT,
-                course_code TEXT,
-                max_marks TEXT,
-                mandatory_count TEXT,
-                q1a TEXT,
-                co1a TEXT,
-                lvl1a TEXT,
-                marks1a TEXT,
-                q1b TEXT,
-                co1b TEXT,
-                lvl1b TEXT,
-                marks1b TEXT,
-                q2a TEXT,
-                co2a TEXT,
-                lvl2a TEXT,
-                marks2a TEXT,
-                q2b TEXT,
-                co2b TEXT,
-                lvl2b TEXT,
-                marks2b TEXT,
-                q3a TEXT,
-                co3a TEXT,
-                lvl3a TEXT,
-                marks3a TEXT,
-                q3b TEXT,
-                co3b TEXT,
-                lvl3b TEXT,
-                marks3b TEXT,
-                q4a TEXT,
-                co4a TEXT,
-                lvl4a TEXT,
-                marks4a TEXT,
-                q4b TEXT,
-                co4b TEXT,
-                lvl4b TEXT,
-                marks4b TEXT,
-                FOREIGN KEY(user_id) REFERENCES users(userid)
-            )
-        ''')
 
 @app.route('/')
 def index():
@@ -321,5 +257,6 @@ def status():
         return render_template('status.html', papers=papers)
 
 if __name__ == '__main__':
-    init_db()
+    kickstarter.init_db()
+    kickstarter.init_dirs()
     app.run(debug=True)

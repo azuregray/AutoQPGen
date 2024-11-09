@@ -1,4 +1,4 @@
-import pdfkit
+import pdfkit, datetime
 
 def QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, date, timings, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, q1b, co1b, lvl1b, marks1b, q2a, co2a, lvl2a, marks2a, q2b, co2b, lvl2b, marks2b, q3a, co3a, lvl3a, marks3a, q3b, co3b, lvl3b, marks3b, q4a, co4a, lvl4a, marks4a, q4b, co4b, lvl4b, marks4b):
     html_table = f'''
@@ -163,7 +163,8 @@ def QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, 
     </html>
     '''
     
-    table_op_path = "D:/Darshan/Documents/AutoQPGen/Phase03/static/GeneratedPapers/" + course_code + ".pdf"
+    currtime = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    table_op_path = "./static/GeneratedPapers/" + course_code + "__" + currtime + ".pdf"
 
     options = {
         'page-size': 'A4',
