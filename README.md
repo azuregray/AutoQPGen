@@ -7,7 +7,9 @@
 
 #### `PROJECT DURATION (PROJECTED)` &ensp; June 2023 - December 2024 (18 Months)
 
-> **Department of AI & ML - Sri Krishna Institute of Technology, Bangalore - `Final Year Project 2021 Batch`** 💙
+> **`Final Year Project 2021 Batch`** 💙
+
+> **Department of AI & ML - Sri Krishna Institute of Technology, Bangalore**
 
 > **`1KT21AI014` D A R S H A N &ensp; S &ensp; `TEAM LEADER` >> [**`GITHUB`**](https://github.com/azuregray/) | [**`LINKEDIN`**](https://linkedin.com/in/arcticblue)**
 
