@@ -39,6 +39,13 @@ python ./app.py
 
 > 7️⃣ **Step 07**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`. For example: `https://127.0.0.1:5000`
 ---
+### **NOTE**
+> We have noticed that there is a general bug in PyMuPDF library which can give the following error: `Attribute Error : fitz has no attribute open()`. Since fitz is just a wrapper for PyMuPDF library, this error can be fixed easily by force-reinstalling PyMuPDF with the following command in your Terminal  `Interpreter: PowerShell`:
+```
+python -m pip install --force-reinstall pymupdf
+```
+> Refer [PyMuPDF/issues](https://github.com/pymupdf/PyMuPDF/issues/660) for more information on the same.
+---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰
 > Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
 ---
