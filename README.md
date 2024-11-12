@@ -19,7 +19,7 @@
 
 ---
 ## **`SKILLS LEARNT / TECHNOLOGIES USED`**
-> **`HTML5`** **`CSS3`** **`JAVASCRIPT`** **`PYTHON`** **`FLASK`** **`SECRETS`** **`DJANGO`** **`SQLITE`** **`GIT`** **`GITHUB`** **`PIP`** **`MARKDOWN`** **`PYTORCH`** **`TENSORFLOW`** **`PDF RENDERING`**
+> **`HTML5`** **`CSS3`** **`JAVASCRIPT`** **`PYTHON`** **`FLASK`** **`SECRETS`** **`DJANGO`** **`SQLITE`** **`GIT`** **`GITHUB`** **`PIP`** **`MARKDOWN`** **`SHELL SCRIPTING`** **`POWERSHELL`** **`PYTORCH`** **`TENSORFLOW`** **`PDF RENDERING`**
 
 ---
 ## **`DEPLOYMENT & USAGE`**
