@@ -18,6 +18,10 @@
 > **`1KT21AI013` D A N U S H &ensp; V >> [**`GITHUB`**](https://github.com/thedynamics) | [**`LINKEDIN`**](https://www.linkedin.com/in/masterofseas)**
 
 ---
+## **`SKILLS LEARNT / TECHNOLOGIES USED`**
+> **`HTML5`** **`CSS3`** **`JAVASCRIPT`** **`PYTHON`** **`FLASK`** **`SECRETS`** **`DJANGO`** **`SQLITE`** **`GIT`** **`GITHUB`** **`PIP`** **`MARKDOWN`** **`PYTORCH`** **`TENSORFLOW`** **`PDF RENDERING`**
+
+---
 ## **`DEPLOYMENT & USAGE`**
 > 1️⃣ **Step 01**: Please visit the Original Repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP"
 
