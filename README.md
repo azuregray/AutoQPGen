@@ -15,7 +15,7 @@
 
 > **`1KT21AI011` C H E T H A N &ensp; G O W D A &ensp; M &ensp; V >> [**`GITHUB`**](https://github.com/chethangowdamv) | [**`LINKEDIN`**](https://www.linkedin.com/in/chethan-gowda-m-v-98a2a0229)**
 
-> **`1KT21AI013` D A N U S H &ensp; V >> [**`GITHUB`**](https://github.com/DANUSHv1) | [**`LINKEDIN`**](https://www.linkedin.com/in/masterofseas)**
+> **`1KT21AI013` D A N U S H &ensp; V >> [**`GITHUB`**](https://github.com/thedynamics) | [**`LINKEDIN`**](https://www.linkedin.com/in/masterofseas)**
 
 ---
 ## **`DEPLOYMENT & USAGE`**
