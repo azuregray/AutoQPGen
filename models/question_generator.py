@@ -198,8 +198,9 @@ def extract_questions_from_pdf(pdf_path):
     final_8questions = shuffled_questions_first_half + shuffled_questions_second_half
     final_8co_list = shuffled_co_first_half + shuffled_co_second_half
     final_8levels_list = shuffled_levels_first_half + shuffled_levels_second_half
+    final_8modules = final_8co_list
     
-    return {key: value for key, value in locals().items() if key in ['faculty_name', 'subject_name', 'subject_code', 'semester', 'final_8questions', 'final_8co_list', 'final_8levels_list']}
+    return {key: value for key, value in locals().items() if key in ['faculty_name', 'subject_name', 'subject_code', 'semester', 'final_8questions', 'final_8co_list', 'final_8levels_list', 'final_8modules']}
 
 
 # WARNING ----------------------- 
@@ -234,7 +235,7 @@ def extract_questions_from_pdf(pdf_path):
 #         else:
 #             processed_question = question
         
-#         response = model.generate_content(f'Just give me on point answer: rephrase the question to another same kind of question without the quotation marks: "{question}"')
+#         response = model.generate_content(f'Only the answer please: Rephrase this question to another same kind of question without the quotation marks: "{question}"')
 #         new_questions.append(response.text)
 
 #     return new_questions

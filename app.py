@@ -27,6 +27,14 @@ global_priolvl = ""
 global_digisign = ""
 global_paper_id = 0
 
+def login_required(f):              # Login Watchdog Function
+    def wrapper(*args, **kwargs):
+        if not session.get('logged_in'):  # Check if the user is logged in
+            return redirect(url_for('login'))  # Redirect to login if not
+        return f(*args, **kwargs)
+    wrapper.__name__ = f.__name__
+    return wrapper
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -106,6 +114,7 @@ def profile():
     return render_template('profile.html', username = username_value, greeting = greeting)
 
 @app.route('/create_paper', methods=['GET', 'POST'])
+@login_required
 def create_paper():
     if request.method == 'POST':
         question_bank = request.files['question_bank']
@@ -123,8 +132,9 @@ def create_paper():
         questions = extracted_data['final_8questions']
         co_list = extracted_data['final_8co_list']
         levels = extracted_data['final_8levels_list']
+        modules = extracted_data['final_8modules']
         
-        return render_template('create_paper.html', faculty_name=faculty_name, subject_name=subject_name, subject_code=subject_code, semester=semester, questions=questions, co_list=co_list, levels=levels)
+        return render_template('create_paper.html', faculty_name=faculty_name, subject_name=subject_name, subject_code=subject_code, semester=semester, questions=questions, co_list=co_list, levels=levels, modules=modules)
     
     return render_template('create_paper.html')
 
@@ -151,44 +161,52 @@ def download_pdf():
     co1a = request.form['co1a']
     lvl1a = request.form['lvl1a']
     marks1a = request.form['marks1a']
+    module1a = request.form['module1a']
     q1b = request.form['q1b']
     co1b = request.form['co1b']
     lvl1b = request.form['lvl1b']
     marks1b = request.form['marks1b']
+    module1b = request.form['module1b']
     q2a = request.form['q2a']
     co2a = request.form['co2a']
     lvl2a = request.form['lvl2a']
     marks2a = request.form['marks2a']
+    module2a = request.form['module2a']
     q2b = request.form['q2b']
     co2b = request.form['co2b']
     lvl2b = request.form['lvl2b']
     marks2b = request.form['marks2b']
+    module2b = request.form['module2b']
     q3a = request.form['q3a']
     co3a = request.form['co3a']
     lvl3a = request.form['lvl3a']
     marks3a = request.form['marks3a']
+    module3a = request.form['module3a']
     q3b = request.form['q3b']
     co3b = request.form['co3b']
     lvl3b = request.form['lvl3b']
     marks3b = request.form['marks3b']
+    module3b = request.form['module3b']
     q4a = request.form['q4a']
     co4a = request.form['co4a']
     lvl4a = request.form['lvl4a']
     marks4a = request.form['marks4a']
+    module4a = request.form['module4a']
     q4b = request.form['q4b']
     co4b = request.form['co4b']
     lvl4b = request.form['lvl4b']
     marks4b = request.form['marks4b']
+    module4b = request.form['module4b']
     
     with sqlite3.connect('database.db') as conn:
             cursor = conn.cursor()
             cursor.execute('''
-                INSERT INTO papers (user_id, paper_id, cie_number, dept_name, semester, course_name, elective_choice, date, time, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, q1b, co1b, lvl1b, marks1b, q2a, co2a, lvl2a, marks2a, q2b, co2b, lvl2b, marks2b, q3a, co3a, lvl3a, marks3a, q3b, co3b, lvl3b, marks3b, q4a, co4a, lvl4a, marks4a, q4b, co4b, lvl4b, marks4b)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (user_id, paper_id, cie_number, dept_name, semester, course_name, elective_choice, date, timings, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, q1b, co1b, lvl1b, marks1b, q2a, co2a, lvl2a, marks2a, q2b, co2b, lvl2b, marks2b, q3a, co3a, lvl3a, marks3a, q3b, co3b, lvl3b, marks3b, q4a, co4a, lvl4a, marks4a, q4b, co4b, lvl4b, marks4b))
+                INSERT INTO papers (user_id, paper_id, cie_number, dept_name, semester, course_name, elective_choice, date, time, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (user_id, paper_id, cie_number, dept_name, semester, course_name, elective_choice, date, timings, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b))
             conn.commit()
     
-    pdf_output_path = QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, date, timings, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, q1b, co1b, lvl1b, marks1b, q2a, co2a, lvl2a, marks2a, q2b, co2b, lvl2b, marks2b, q3a, co3a, lvl3a, marks3a, q3b, co3b, lvl3b, marks3b, q4a, co4a, lvl4a, marks4a, q4b, co4b, lvl4b, marks4b)
+    pdf_output_path = QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, date, timings, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b)
     return send_file(pdf_output_path, as_attachment=True)
 
 @app.route('/send_for_approval', methods=['POST'])
@@ -206,6 +224,7 @@ def send_for_approval():
     return redirect(url_for('approve_paper', paper_id=paper_id))
 
 @app.route('/approve_paper/<int:paper_id>', methods=['GET', 'POST'])
+@login_required
 def approve_paper(paper_id):
     global global_priolvl
     priolvl = global_priolvl
@@ -228,6 +247,7 @@ def approve_paper(paper_id):
     return render_template('approval.html', paper_id=paper_id, global_priolvl=priolvl)
 
 @app.route('/status')
+@login_required
 def status():
     user_id = global_user_id
     priolvl = global_priolvl
@@ -259,4 +279,5 @@ def status():
 if __name__ == '__main__':
     kickstarter.init_db()
     kickstarter.init_dirs()
-    app.run(debug=True)
+    #app.run(host="Powershell::ipconfig::IPv4Address", port=5000, debug=True)   # This runs the app server on specified IPv4 Address and port
+    app.run(debug=True)     # This by default runs the app server on localhost 127.0.0.1:5000
