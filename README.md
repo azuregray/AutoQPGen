@@ -3,9 +3,9 @@
 ![SKIT Emblem](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
-#### `DESCRIPTION` &ensp; An Institution-wide Automation driven Assessment Creation and Management Platform.
+#### `DESCRIPTION` &ensp; An Institution-wide Automation-driven Assessment Creation and Management Platform.
 
-#### `PROJECT DURATION (PROJECTED)` &ensp; June 2023 - December 2024 (18 Months)
+#### `PROJECT DURATION (PROJECTED)` &ensp; June 2024 - November 2024 (5 Months)
 
 > **`Final Year Project 2021 Batch`** 💙
 
