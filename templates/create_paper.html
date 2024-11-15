@@ -21,12 +21,12 @@
             <h2 id="generated_info">Question Paper design: </h2>
             <form action="{{ url_for('download_pdf') }}" method="post" style="max-width: 900px;">
                 <div class="header">
-                    <h1 style="text-align:center;">CIE - <input type="text" name="cie_number" value="01" required></h1>
+                    <h1 style="text-align:center;">IA - <input type="text" name="cie_number" value="01" required></h1>
                 </div>
                 <div class="tablediv">
                     <table id="generated_table">
                         <tr>
-                            <td colspan="1">Dept: <input type="text" class="form_input_text" name="dept_name" value="AIML" required></td>
+                            <td colspan="1">Dept: <input type="text" class="form_input_text" name="dept_name" value="Artificial Intelligence and Machine Learning" required></td>
                             <td colspan="1">Sem / Div: <input type="text" class="form_input_text" name="semester" value="{{ semester }}" required></td>
                             <td colspan="3">Course: <input type="text" class="form_input_text" name="course_name" value="{{ subject_name }}" required></td>
                             <td colspan="1">Elective: <input type="text" class="form_input_text" name="elective_choice" value="NO" required></td>

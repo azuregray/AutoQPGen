@@ -146,7 +146,7 @@ def download_pdf():
         global_paper_id += random.randint(1, 10)
         print(f"\n\nnew paper id generated: {global_paper_id}\n\n")
     paper_id = global_paper_id
-    print(f"\n\npaper id after assign: {paper_id}\n\n")
+    print(f"\n\n[EVENT] paper id after assign: {paper_id}\n\n")
     user_id = global_user_id
     cie_number = request.form['cie_number']
     dept_name = request.form['dept_name']
@@ -213,8 +213,8 @@ def download_pdf():
 @app.route('/send_for_approval', methods=['POST'])
 def send_for_approval():
     paper_id = global_paper_id
-    print(f"\n\npaper id at send_for_approval: {paper_id}\n\n")
-    status = "Pending Approval"
+    print(f"\n\n[EVENT] paper id at send_for_approval: {paper_id}\n\n")
+    status = "Forwarded for Approval"
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
         cursor.execute('''
@@ -224,12 +224,24 @@ def send_for_approval():
     # Redirect to the approval page with the paper ID
     return redirect(url_for('approve_paper', paper_id=paper_id))
 
+@app.route('/hod_status_approved/<int:paper_id>', methods=['POST'])
+def hod_status_approved(paper_id):
+    print(f"\n[EVENT] HOD of {global_department} approved paper with paperid {paper_id}\n")
+    status = "Paper Approved ✅"
+    with sqlite3.connect('database.db') as conn:
+        cursor = conn.cursor()
+        cursor.execute('''
+            UPDATE papers SET status = ? WHERE paper_id = ?
+        ''', (status, paper_id))
+    
+    return redirect(url_for('status'))
+
 @app.route('/approve_paper/<int:paper_id>', methods=['GET', 'POST'])
 # @login_required
 def approve_paper(paper_id):
     global global_priolvl
     priolvl = global_priolvl
-    print(f"\n\npriolvl at approve_paper: {priolvl}\n\n")
+    print(f"\n\n[EVENT] priolvl at approve_paper: {priolvl}\n\n")
     if request.method == 'POST':
         action = request.form['action']
         with sqlite3.connect('database.db') as conn:
