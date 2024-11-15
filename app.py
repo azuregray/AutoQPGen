@@ -27,13 +27,13 @@ global_priolvl = ""
 global_digisign = ""
 global_paper_id = 0
 
-def login_required(f):              # Login Watchdog Function
-    def wrapper(*args, **kwargs):
-        if not session.get('logged_in'):  # Check if the user is logged in
-            return redirect(url_for('login'))  # Redirect to login if not
-        return f(*args, **kwargs)
-    wrapper.__name__ = f.__name__
-    return wrapper
+# def login_required(f):              # Login Watchdog Function
+#     def wrapper(*args, **kwargs):
+#         if not session.get('logged_in'):  # Check if the user is logged in
+#             return redirect(url_for('login'))  # Redirect to login if not
+#         return f(*args, **kwargs)
+#     wrapper.__name__ = f.__name__
+#     return wrapper
 
 @app.route('/')
 def index():
@@ -114,7 +114,7 @@ def profile():
     return render_template('profile.html', username = username_value, greeting = greeting)
 
 @app.route('/create_paper', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def create_paper():
     if request.method == 'POST':
         question_bank = request.files['question_bank']
@@ -224,7 +224,7 @@ def send_for_approval():
     return redirect(url_for('approve_paper', paper_id=paper_id))
 
 @app.route('/approve_paper/<int:paper_id>', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def approve_paper(paper_id):
     global global_priolvl
     priolvl = global_priolvl
@@ -247,7 +247,7 @@ def approve_paper(paper_id):
     return render_template('approval.html', paper_id=paper_id, global_priolvl=priolvl)
 
 @app.route('/status')
-@login_required
+# @login_required
 def status():
     user_id = global_user_id
     priolvl = global_priolvl
