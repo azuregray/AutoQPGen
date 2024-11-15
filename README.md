@@ -32,7 +32,7 @@
 python -m pip install -r requirements.txt
 ```
 
-> 4️⃣ **Step 04**: Install `wkhtmltopdf` from their Downloads page - [**`wkhtmltox`**](https://wkhtmltopdf.org/downloads.html/) and download the appropriate installer (Windows 64-bit for Windows machines and so on). For windows, the downloaded file must look something like `wkhtmltox-...-win64.exe` 
+> 4️⃣ **Step 04**: Install `wkhtmltopdf` from their Downloads page - [**`wkhtmltox`**](https://wkhtmltopdf.org) and download the appropriate installer (Windows 64-bit for Windows machines and so on). For windows, the downloaded file must look something like `wkhtmltox-...-win64.exe` 
 
 > 5️⃣ **Step 05**: After installing the WKHTMLTOX setup file in Step 04, you need to add its binaries to System PATH. Normally this should happen automatically. Just to confirm.
 
