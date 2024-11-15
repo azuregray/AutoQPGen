@@ -13,6 +13,7 @@ import kickstarter
 app = Flask(__name__)
 app.secret_key = 'no-cookie-implementation-yet'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
+
 global global_user_id
 global global_username
 global global_department
