@@ -259,7 +259,7 @@ def status():
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM papers WHERE user_id = ?', (user_id,))
             papers = cursor.fetchall()
-        return render_template('status.html', papers=papers)
+        return render_template('status.html', papers=papers, priolvl=priolvl)
     elif priolvl == 'HOD':
         if not user_id:
             return redirect(url_for('login'))
@@ -267,7 +267,7 @@ def status():
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM papers WHERE dept_name = ?', (global_department,))
             papers = cursor.fetchall()
-        return render_template('status.html', papers=papers)
+        return render_template('status.html', papers=papers, priolvl=priolvl)
     else:
         if not user_id:
             return redirect(url_for('login'))
@@ -275,7 +275,7 @@ def status():
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM papers')
             papers = cursor.fetchall()
-        return render_template('status.html', papers=papers)
+        return render_template('status.html', papers=papers, priolvl=priolvl)
 
 if __name__ == '__main__':
     kickstarter.init_db()

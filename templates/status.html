@@ -17,7 +17,7 @@
             {% for paper in papers %}
                 <li>
                     PaperID: {{ paper[2] }} - {{ paper[11] }} - {{ paper[7] }} Status: {{ paper[3] }}
-                    <form action="{{ url_for('download_pdf') }}" method="post">
+                    <form id="paperForm" action="{{ url_for('download_pdf') }}" method="post">
                         <input type="text" name="cie_number" value="{{ paper[4] }}" hidden>
                         <input type="text" name="dept_name" value="{{ paper[5] }}" hidden>
                         <input type="text" name="semester" value="{{ paper[6] }}" hidden>
@@ -68,12 +68,24 @@
                         <input type="text" name="lvl4b" value="{{ paper[51] }}" hidden>
                         <input type="text" name="marks4b" value="{{ paper[52] }}" hidden>
                         <input type="text" name="module4b" value="{{ paper[53] }}" hidden>
-                        <button>Download Paper</button>
+
+                        <button type="button" onclick="submitForm('{{ url_for('download_pdf') }}')">Download Paper</button>
+                        {% if priolvl == 'HOD' %}
+                            <button type="button" onclick="submitForm('{{ url_for('approve_paper', paper_id=paper[2]) }}')">Approve Paper</button>
+                        {% endif %}
                     </form>
                 </li>
             {% endfor %}
         </ul>
     </div>
+    <script>
+        function submitForm(actionUrl) {
+            // Set the form action dynamically
+            const form = document.getElementById('paperForm');
+            form.action = actionUrl;
+            form.submit();
+        }
+    </script>
     <footer>
         <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
     </footer>
