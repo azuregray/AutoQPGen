@@ -36,15 +36,20 @@ python -m pip install -r requirements.txt
 
 > 5️⃣ **Step 05**: After installing the WKHTMLTOX setup file in Step 04, you need to add its binaries to System PATH. Normally this should happen automatically. Just to confirm.
 
-> 6️⃣ **Step 06**: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
+> 6️⃣ **Step 06**: Next thing to be focused on is to install the very important NER Model for SpaCy. Just run this in the Terminal `Interpreter: PowerShell`:
+```
+python -m spacy download en_core_web_sm
+```
+
+> 7️⃣ **Step 07**: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
 ```
 python ./app.py
 ```
 
-> 7️⃣ **Step 07**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`. For example: `https://127.0.0.1:5000`
+> 8️⃣ **Step 08**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`. For example: `https://127.0.0.1:5000`
 ---
-### **`KNOWN ISSUE`**
-> We have noticed that there is a general bug in PyMuPDF library which can give the following error: `Attribute Error : fitz has no attribute open()`. Since fitz is just a wrapper for PyMuPDF library, this error can be fixed easily by force-reinstalling PyMuPDF with the following command in your Terminal  `Interpreter: PowerShell`:
+### **`DEPENDENCY ISSUE`**
+> We have noticed that there is a general bug in PyMuPDF library which can give the following error: `Attribute Error : fitz has no attribute open()`. If you faced the same, please do not panic! Since fitz is just a wrapper for PyMuPDF library, this error can be fixed easily by force-reinstalling PyMuPDF with the following command in your Terminal  `Interpreter: PowerShell`:
 ```
 python -m pip install --force-reinstall pymupdf
 ```
