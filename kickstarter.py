@@ -6,30 +6,30 @@ def init_db():
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                userid TEXT UNIQUE NOT NULL,
-                username TEXT UNIQUE NOT NULL,
+                userId TEXT UNIQUE NOT NULL,
+                userName TEXT UNIQUE NOT NULL,
                 password TEXT NOT NULL,
                 department TEXT NOT NULL,
-                priolvl TEXT NOT NULL,
-                signature_path TEXT NOT NULL
+                priorityLevel TEXT NOT NULL,
+                signaturePath TEXT NOT NULL
             )
         ''')
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS papers (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER,
-                paper_id INTEGER,
+                userId INTEGER,
+                paperId INTEGER,
                 status TEXT,
-                cie_number TEXT,
-                dept_name TEXT,
+                cieNumber TEXT,
+                departmentName TEXT,
                 semester TEXT,
-                course_name TEXT,
-                elective_choice TEXT,
+                courseName TEXT,
+                electiveChoice TEXT,
                 date TEXT,
-                time TEXT,
-                course_code TEXT,
-                max_marks TEXT,
-                mandatory_count TEXT,
+                timings TEXT,
+                courseCode TEXT,
+                maxMarks TEXT,
+                mandatoryCount TEXT,
                 q1a TEXT,
                 co1a TEXT,
                 lvl1a TEXT,
@@ -70,28 +70,77 @@ def init_db():
                 lvl4b TEXT,
                 marks4b TEXT,
                 module4b TEXT,
-                FOREIGN KEY(user_id) REFERENCES users(userid)
+                FOREIGN KEY(userId) REFERENCES users(userId)
             )
         ''')
         conn.commit()
 
 
 def init_dirs():
-    generated_papers_dir = './static/GeneratedPapers'
-    uploaded_docs_dir = './static/uploads'
+    generatedPapersFolder = './static/GeneratedPapers'
+    uploadsFolder = './static/Uploads'
+    singaturesFolder = './static/Signatures'
     
-    if os.path.isdir(generated_papers_dir):
-        shutil.rmtree(generated_papers_dir)
-        os.mkdir(generated_papers_dir)
+    if os.path.isdir(generatedPapersFolder):
+        shutil.rmtree(generatedPapersFolder)
+        os.mkdir(generatedPapersFolder)
     else:
-        os.mkdir(generated_papers_dir)
+        os.mkdir(generatedPapersFolder)
     
-    if os.path.isdir(uploaded_docs_dir):
-        shutil.rmtree(uploaded_docs_dir)
-        os.mkdir(uploaded_docs_dir)
+    if os.path.isdir(uploadsFolder):
+        shutil.rmtree(uploadsFolder)
+        os.mkdir(uploadsFolder)
     else:
-        os.mkdir(uploaded_docs_dir)
+        os.mkdir(uploadsFolder)
     
+    if os.path.isdir(singaturesFolder):
+        shutil.rmtree(singaturesFolder)
+        os.mkdir(singaturesFolder)
+    else:
+        os.mkdir(singaturesFolder)
+
+def init_logBook():
+    logFilePath = 'LogBook.txt'
+    if os.path.isfile(logFilePath):
+        os.remove(logFilePath)
+    logFileObject = open("LogBook.txt", "xt")
+    logFileObject.close()
+
+def init_pycache():
+    pycache_app = './__pycache__'
+    pycache_models = './models/__pycache__'
+    if os.path.exists(pycache_app):
+        shutil.rmtree(pycache_app)
+    if os.path.exists(pycache_models):
+        shutil.rmtree(pycache_models)
+
+def resetApp():
+    init_dirs()
+    init_db()
+    init_logBook()
+    init_pycache()
+
+def unsetApp():
+    generatedPapersFolder = './static/GeneratedPapers'
+    uploadsFolder = './static/Uploads'
+    singaturesFolder = './static/Signatures'
+    
+    if os.path.isdir(generatedPapersFolder):
+        shutil.rmtree(generatedPapersFolder)
+    
+    if os.path.isdir(uploadsFolder):
+        shutil.rmtree(uploadsFolder)
+    
+    if os.path.isdir(singaturesFolder):
+        shutil.rmtree(singaturesFolder)
+    
+    init_pycache()
+    if os.path.isfile('database.db'):
+        os.remove('database.db')
+    if os.path.isfile('LogBook.txt'):
+        os.remove('LogBook.txt')
+
 if __name__ == '__main__':
     init_dirs()
     init_db()
+    init_logBook()

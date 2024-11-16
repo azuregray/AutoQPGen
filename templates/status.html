@@ -17,63 +17,20 @@
             {% for paper in papers %}
                 <li>
                     <span> PaperID: {{ paper[2] }} - {{ paper[11] }} - {{ paper[7] }} Status: {{ paper[3] }} </span>
-                    <form action="{{ url_for('download_pdf') }}" method="post">
-                        <input type="text" name="cie_number" value="{{ paper[4] }}" hidden>
-                        <input type="text" name="dept_name" value="{{ paper[5] }}" hidden>
-                        <input type="text" name="semester" value="{{ paper[6] }}" hidden>
-                        <input type="text" name="course_name" value="{{ paper[7] }}" hidden>
-                        <input type="text" name="elective_choice" value="{{ paper[8] }}" hidden>
-                        <input type="text" name="date" value="{{ paper[9] }}" hidden>
-                        <input type="text" name="timings" value="{{ paper[10] }}" hidden>
-                        <input type="text" name="course_code" value="{{ paper[11] }}" hidden>
-                        <input type="text" name="max_marks" value="{{ paper[12] }}" hidden>
-                        <input type="text" name="mandatory_count" value="{{ paper[13] }}" hidden>
-                        <input type="text" name="q1a" value="{{ paper[14] }}" hidden>
-                        <input type="text" name="co1a" value="{{ paper[15] }}" hidden>
-                        <input type="text" name="lvl1a" value="{{ paper[16] }}" hidden>
-                        <input type="text" name="marks1a" value="{{ paper[17] }}" hidden>
-                        <input type="text" name="module1a" value="{{ paper[18] }}" hidden>
-                        <input type="text" name="q1b" value="{{ paper[19] }}" hidden>
-                        <input type="text" name="co1b" value="{{ paper[20] }}" hidden>
-                        <input type="text" name="lvl1b" value="{{ paper[21] }}" hidden>
-                        <input type="text" name="marks1b" value="{{ paper[22] }}" hidden>
-                        <input type="text" name="module1b" value="{{ paper[23] }}" hidden>
-                        <input type="text" name="q2a" value="{{ paper[24] }}" hidden>
-                        <input type="text" name="co2a" value="{{ paper[25] }}" hidden>
-                        <input type="text" name="lvl2a" value="{{ paper[26] }}" hidden>
-                        <input type="text" name="marks2a" value="{{ paper[27] }}" hidden>
-                        <input type="text" name="module2a" value="{{ paper[28] }}" hidden>
-                        <input type="text" name="q2b" value="{{ paper[29] }}" hidden>
-                        <input type="text" name="co2b" value="{{ paper[30] }}" hidden>
-                        <input type="text" name="lvl2b" value="{{ paper[31] }}" hidden>
-                        <input type="text" name="marks2b" value="{{ paper[32] }}" hidden>
-                        <input type="text" name="module2b" value="{{ paper[33] }}" hidden>
-                        <input type="text" name="q3a" value="{{ paper[34] }}" hidden>
-                        <input type="text" name="co3a" value="{{ paper[35] }}" hidden>
-                        <input type="text" name="lvl3a" value="{{ paper[36] }}" hidden>
-                        <input type="text" name="marks3a" value="{{ paper[37] }}" hidden>
-                        <input type="text" name="module3a" value="{{ paper[38] }}" hidden>
-                        <input type="text" name="q3b" value="{{ paper[39] }}" hidden>
-                        <input type="text" name="co3b" value="{{ paper[40] }}" hidden>
-                        <input type="text" name="lvl3b" value="{{ paper[41] }}" hidden>
-                        <input type="text" name="marks3b" value="{{ paper[42] }}" hidden>
-                        <input type="text" name="module3b" value="{{ paper[43] }}" hidden>
-                        <input type="text" name="q4a" value="{{ paper[44] }}" hidden>
-                        <input type="text" name="co4a" value="{{ paper[45] }}" hidden>
-                        <input type="text" name="lvl4a" value="{{ paper[46] }}" hidden>
-                        <input type="text" name="marks4a" value="{{ paper[47] }}" hidden>
-                        <input type="text" name="module4a" value="{{ paper[48] }}" hidden>
-                        <input type="text" name="q4b" value="{{ paper[49] }}" hidden>
-                        <input type="text" name="co4b" value="{{ paper[50] }}" hidden>
-                        <input type="text" name="lvl4b" value="{{ paper[51] }}" hidden>
-                        <input type="text" name="marks4b" value="{{ paper[52] }}" hidden>
-                        <input type="text" name="module4b" value="{{ paper[53] }}" hidden>
-                        <button type="button">Download Paper</button>
+                    <form action="{{ url_for('download_pdf_with_paperId', paperId=paper[2]) }}" method="post">
+                        <button type="submit">Download Paper</button>
                     </form>
                     {% if priolvl == 'HOD' %}
-                        <form action="{{ url_for('hod_status_approved', paper_id=paper[2]) }}" method="post">
-                            <button name="action" value="forward_to_hod">Approve Paper as HOD</button>
-                        </form>
+                        {% if paper[3] == 'Paper Rejected ⛔' or 'Forwarded for HOD Approval.' %}
+                            <form action="{{ url_for('paper_status_approved', paperId=paper[2]) }}" method="post">
+                                <button type="submit"> Approve Paper </button>
+                            </form>
+                        {% endif %}
+                        {% if paper[3] == 'Paper Approved ✅' or 'Forwarded for HOD Approval.' %}
+                            <form action="{{ url_for('paper_status_rejected', paperId=paper[2]) }}" method="post">
+                                <button type="submit"> Reject Paper </button>
+                            </form>
+                        {% endif %}
                     {% endif %}
                 </li>
             {% endfor %}

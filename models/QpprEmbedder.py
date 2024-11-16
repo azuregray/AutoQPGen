@@ -1,6 +1,8 @@
-import pdfkit, datetime
+import pdfkit
+import datetime
 
-def QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, date, timings, course_code, max_marks, mandatory_count, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b):
+def QpprEmbedder(paperData):
+    id, userId, paperId, status, cieNumber, departmentName, semester, courseName, electiveChoice, date, timings, courseCode, maxMarks, mandatoryCount, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b = paperData
     html_table = f'''
     <!DOCTYPE html>
     <html lang="en">
@@ -75,23 +77,23 @@ def QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, 
         </div>
         <hr>
         <div class="cie-header">
-            <h2 style="text-align:center;">CIE - {cie_number}</h2>
+            <h2 style="text-align:center;">IA - {cieNumber}</h2>
         </div>
         <table>
             <tr>
-                <td colspan="2">Dept: {dept_name}</td>
+                <td colspan="2">Dept: {departmentName}</td>
                 <td>Sem / Div: {semester}</td>
-                <td colspan="2">Course: {course_name}</td>
-                <td>Elective: {elective_choice}</td>
+                <td colspan="2">Course: {courseName}</td>
+                <td>Elective: {electiveChoice}</td>
             </tr>
             <tr>
                 <td colspan="2">Date: {date}</td>
                 <td>Timings: {timings}</td>
-                <td colspan="2">C Code: {course_code}</td>
-                <td>Max Marks: {max_marks}</td>
+                <td colspan="2">C Code: {courseCode}</td>
+                <td>Max Marks: {maxMarks}</td>
             </tr>
             <tr>
-                <td colspan="6" style="font-weight: bold; text-align: center">Note: Answer ANY {mandatory_count} full questions. All questions carry 20 marks.</td>
+                <td colspan="6" style="font-weight: bold; text-align: center">Note: Answer ANY {mandatoryCount} full questions. All questions carry 20 marks.</td>
             </tr>
             <tr class="column_headers">
                 <td style="text-align:center; font-weight: bold;">QNo.</td>
@@ -175,8 +177,8 @@ def QpprEmbedder(cie_number, dept_name, semester, course_name, elective_choice, 
     </html>
     '''
     
-    currtime = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    table_op_path = "./static/GeneratedPapers/" + course_code + "__" + currtime + ".pdf"
+    currentTimeCode = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    table_op_path = "./static/GeneratedPapers/" + courseCode + "__" + currentTimeCode + ".pdf"
 
     options = {
         'page-size': 'A4',

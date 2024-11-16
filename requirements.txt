@@ -6,3 +6,5 @@ pathlib
 fpdf
 tools
 frontend
+secrets
+spacy

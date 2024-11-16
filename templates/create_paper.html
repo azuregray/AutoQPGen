@@ -17,28 +17,31 @@
             <input type="file" accept=".pdf" id="question_bank" name="question_bank" required>
             <button type="submit">Generate Paper</button>
         </form>
-        {% if faculty_name and subject_name and subject_code and semester and questions and co_list and levels %}
+        {% if facultyName and subjectName and subjectCode and semester and questions and co_list and levels and departmentName %}
             <h2 id="generated_info">Question Paper design: </h2>
-            <form action="{{ url_for('download_pdf') }}" method="post" style="max-width: 900px;">
-                <div class="header">
-                    <h1 style="text-align:center;">IA - <input type="text" name="cie_number" value="01" required></h1>
+            <form action="{{ url_for('savePaper') }}" method="post" style="max-width: 1000px;">
+                <div class="header" style="text-align: center;">
+                    <div style="display: inline-flex; align-items: center;">
+                        <h1 style="margin: 0;">IA -</h1>
+                        <input type="text" name="cieNumber" value="01" required style="margin-left: 10px; font-size: 1.5rem; font-weight: bold;">
+                    </div>
                 </div>
                 <div class="tablediv">
                     <table id="generated_table">
                         <tr>
-                            <td colspan="1">Dept: <input type="text" class="form_input_text" name="dept_name" value="Artificial Intelligence and Machine Learning" required></td>
+                            <td colspan="1">Dept: <input type="text" class="form_input_text" name="departmentName" value="{{ departmentName }}" required></td>
                             <td colspan="1">Sem / Div: <input type="text" class="form_input_text" name="semester" value="{{ semester }}" required></td>
-                            <td colspan="3">Course: <input type="text" class="form_input_text" name="course_name" value="{{ subject_name }}" required></td>
-                            <td colspan="1">Elective: <input type="text" class="form_input_text" name="elective_choice" value="NO" required></td>
+                            <td colspan="3">Course: <input type="text" class="form_input_text" name="courseName" value="{{ subjectName }}" required></td>
+                            <td colspan="1">Elective: <input type="text" class="form_input_text" name="electiveChoice" value="NO" required></td>
                         </tr>
                         <tr>
                             <td colspan="1">Date: <input type="text" class="form_input_text" name="date" value="" required></td>
                             <td colspan="1">Time: <input type="text" class="form_input_text" name="timings" value="" required></td>
-                            <td colspan="3">C Code: <input type="text" class="form_input_text" name="course_code" value="{{ subject_code }}" required></td>
-                            <td colspan="1">Max Marks: <input type="text" class="form_input_text" name="max_marks" value="40" required></td>
+                            <td colspan="3">C Code: <input type="text" class="form_input_text" name="courseCode" value="{{ subjectCode }}" required></td>
+                            <td colspan="1">Max Marks: <input type="text" class="form_input_text" name="maxMarks" value="40" required></td>
                         </tr>
                         <tr>
-                            <td colspan="6" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text" class="form_input_text" name="mandatory_count" value="TWO" required> full questions. All questions carry 20 marks.</td>
+                            <td colspan="6" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text" class="form_input_text" name="mandatoryCount" value="TWO" required> full questions. All questions carry 20 marks.</td>
                         </tr>
                         <tr class="column_headers">
                             <td colspan="1" style="text-align:center; font-weight=bold;">QNo.</td>
@@ -115,10 +118,13 @@
                         </tr>
                     </table>
                 </div>
-                <button type="submit" class="btn">Download PDF</button>
+                <button type="submit" class="btn">Save Paper</button>
+            </form>
+            <form action="{{ url_for('download_pdf_without_paperId') }}" method="post">
+                <button type="submit" class="btn">Download as PDF</button>
             </form>
             <form action="{{ url_for('send_for_approval') }}" method="post">
-                <button type="submit" class="btn">Send for Approval</button>
+                <button type="submit" class="btn">Sign and Proceed</button>
             </form>
         {% endif %}
     </div>
