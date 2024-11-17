@@ -292,28 +292,6 @@ def paper_status_rejected(paperId):
 
     return redirect(url_for('status'))
 
-# @app.route('/approve_paper/<paperId>', methods=['GET', 'POST'])
-# # @login_required
-# def approve_paper(paperId):
-#     global global_priorityLevel
-#     priorityLevel = global_priorityLevel
-#     if request.method == 'POST':
-#         action = request.form['action']
-#         with sqlite3.connect('database.db') as conn:
-#             cursor = conn.cursor()
-#             if action == 'forward_to_hod':
-#                 cursor.execute('UPDATE papers SET status = ? WHERE paperId = ?', ('Pending for HOD Approval', paperId))
-#             elif action == 'discard':
-#                 cursor.execute('DELETE FROM papers WHERE paperId = ?', (paperId,))
-#             elif action == 'selfsign_hod':
-#                 cursor.execute('UPDATE papers SET status = ? WHERE paperId = ?', ('Paper Approved ✅', paperId))
-#             elif action == 'reject_by_hod':
-#                 cursor.execute('UPDATE papers SET status = ? WHERE paperId = ?', ('Paper Rejected ⛔', paperId))
-#             conn.commit()
-#         return redirect(url_for('profile'))
-    
-#     return render_template('approval.html', paperId=paperId, global_priorityLevel=priorityLevel)
-
 @app.route('/status')
 # @login_required
 def status():

@@ -87,3 +87,40 @@ def QScanExport(questionBankPath):
     
     return {key: value for key, value in locals().items() if key in ['facultyName', 'courseName', 'courseCode', 'semester', 'questionsList', 'coList', 'levelsList', 'modulesList']}
 
+
+# WARNING ----------------------- 
+# This QScanEngine.py will now purely return data extracted from the input Question Bank itself, and
+# NOT the required newly rephrased questions using ML (Gemini-Pro in this case).
+# This is due to the fact that Gemini API free usage has restrictions on daily and hourly prompts limit.
+# So using that during development can use up the day's limit before you even notice.
+# Hence, THE BELOW GENAI FUNTION USING THE ABOVE MENTIONED FUNCTIONALITY HAS BEEN GREYED OUT.
+
+# IMPORTANT :: REMEMBER TO NEVER PUSH THE PRIVATE GEMINI API KEY TO OPEN-SOURCE!!
+# If done so, please delete the API key immediately as soon as you realize at any of the below links:
+# Web Link for Google AI Studio - API Key Dashboard :: https://aistudio.google.com/app/apikey
+# Web Link for Google Cloud Console - API Credentials :: https://console.cloud.google.com/apis/credentials
+#---------------------------------------------------------------------------------------------------
+
+
+# NOTE FOR DEVELOPERS: Use print(os.environ["GEMINI_API_KEY"]) to
+# see the privately stored environment variable "GEMINI_API_KEY" on the deployment machine.
+
+
+# def GenAIRephraser(pdf_path):
+#     extractedData = QScanExport(pdf_path)
+#     if not extractedData:
+#         return []
+    
+#     genai.configure(api_key = os.environ["GEMINI_API_KEY"])
+#     model = genai.GenerativeModel('gemini-pro')
+#     rephrasedQuestions = []
+#     for question in extractedData["questionsList"]:
+#         if str(question).count(".") > 1:
+#             processedQuestion = str(question).split(".", 1)[1].strip()
+#         else:
+#             processedQuestion = question
+        
+#         response = model.generate_content(f'Just give me on point answer: rephrase the question to another same kind of question without the quotation marks: "{processedQuestion}"')
+#         rephrasedQuestions.append(response.text)
+
+#     return rephrasedQuestions
