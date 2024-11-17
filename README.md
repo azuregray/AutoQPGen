@@ -77,7 +77,7 @@ python -c "import kickstarter; kickstarter.unsetApp()"
 ```
 ---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰
-> Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
+> Please refer the [**`OFFICIAL GITHUB CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
 ---
 
 ## **`LINK TO THE ORIGINAL REPOSITORY`** ✅
