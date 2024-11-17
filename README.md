@@ -19,7 +19,11 @@
 
 ---
 ## **`SKILLS LEARNT / TECHNOLOGIES USED`**
-**`( HTML5 )`** **`( CSS3 )`** **`( JAVASCRIPT )`** **`( PYTHON )`** **`( FLASK )`** **`( SECRETS )`** **`( DJANGO )`** **`( SQLITE )`** **`( GIT )`** **`( GITHUB )`** **`( PIP )`** **`( MARKDOWN )`** **`( SHELL SCRIPTING )`** **`( POWERSHELL )`** **`( PYTORCH )`** **`( TENSORFLOW )`** **`( PDF RENDERING )`** **`( NLP )`** **`( SPACY )`**
+**`( HTML5 )`** **`( CSS3 )`** **`( JAVASCRIPT )`** **`( PYTHON )`**  
+**`( FLASK )`** **`( SECRETS )`** **`( DJANGO )`** **`( SQLITE )`**  
+**`( GIT )`** **`( GITHUB )`** **`( PIP )`** **`( MARKDOWN )`**  
+**`( SHELL SCRIPTING )`** **`( POWERSHELL )`** **`( PYTORCH )`** **`( TENSORFLOW )`**  
+**`( PDF RENDERING )`** **`( NLP )`** **`( SPACY )`**
 
 ---
 ## **`DEPLOYMENT & USAGE`**
@@ -27,7 +31,8 @@
 
 > 2️⃣ **Step 02**: Extract the downloaded `AutoQPGen-main.zip` file into its folder and move into the same.
 
-> 3️⃣ **Step 03**: Once you are in the root folder, Install the requirements. Take the help of `requirements.txt`, just run this in Terminal `Interpreter: PowerShell`:
+> 3️⃣ **Step 03**: Once you are in the root folder, Install the requirements. Take the help of `requirements.txt`, just run this in Terminal:  
+> `Interpreter: PowerShell`
 ```
 python -m pip install -r requirements.txt
 ```
@@ -36,24 +41,40 @@ python -m pip install -r requirements.txt
 
 > 5️⃣ **Step 05**: After installing the WKHTMLTOX setup file in Step 04, you need to add its binaries to System PATH. Normally this should happen automatically. Just to confirm.
 
-> 6️⃣ **Step 06**: Next thing to be focused on is to install the very important NER Model for SpaCy. Just run this in the Terminal `Interpreter: PowerShell`:
+> 6️⃣ **Step 06**: Next thing to be focused on is to install the very important NER Model for SpaCy. Just run this in the Terminal:  
+> `Interpreter: PowerShell`
 ```
 python -m spacy download en_core_web_sm
 ```
 
-> 7️⃣ **Step 07**: Once that is successful, finally run `app.py` in Terminal `Interpreter: PowerShell`:
+> 7️⃣ **Step 07**: Once that is successful, finally run `app.py` in Terminal:  
+> `Interpreter: PowerShell`
 ```
 python ./app.py
 ```
 
-> 8️⃣ **Step 08**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`. For example: `https://127.0.0.1:5000`
+> 8️⃣ **Step 08**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`.  
+> For example: `https://127.0.0.1:5000`
 ---
 ### **`DEPENDENCY ISSUE`**
-> We have noticed that there is a general bug in PyMuPDF library which can give the following error: `Attribute Error : fitz has no attribute open()`. If you faced the same, please do not panic! Since fitz is just a wrapper for PyMuPDF library, this error can be fixed easily by force-reinstalling PyMuPDF with the following command in your Terminal  `Interpreter: PowerShell`:
+> We have noticed that there is a general bug in PyMuPDF library which can give the following error: `Attribute Error : fitz has no attribute open()`. If you faced the same, please do not panic! Since fitz is just a wrapper for PyMuPDF library, this error can be fixed easily by force-reinstalling PyMuPDF with the following command in your Terminal:  
+> `Interpreter: PowerShell`
 ```
 python -m pip install --force-reinstall pymupdf
 ```
 > Refer [PyMuPDF/issues](https://github.com/pymupdf/PyMuPDF/issues/660) for more information on the same.
+---
+### **`QUICK TIPS`**
+> **`01`** - To quickly setup the entire project to get it ready to RUN FRESH, feel free to invoke resetApp() from kickstarter.py:  
+> `Interpreter: PowerShell`
+```
+python -c "import kickstarter; kickstarter.resetApp()"
+```
+> **`02`** - To quickly setup the entire project to get it ready to SHARE with Team or GITHUB PUSH, feel free to invoke unsetApp() from kickstarter.py:  
+> `Interpreter: PowerShell`
+```
+python -c "import kickstarter; kickstarter.unsetApp()"
+```
 ---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰
 > Please refer the [**`OFFICIAL CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
