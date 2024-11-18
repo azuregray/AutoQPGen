@@ -8,3 +8,6 @@ tools
 frontend
 secrets
 spacy
+docxtpl
+docx2pdf
+tk

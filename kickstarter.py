@@ -80,12 +80,19 @@ def init_dirs():
     generatedPapersFolder = './static/GeneratedPapers'
     uploadsFolder = './static/Uploads'
     singaturesFolder = './static/Signatures'
+    generatedDocxFolder = './static/GeneratedDocx'
     
     if os.path.isdir(generatedPapersFolder):
         shutil.rmtree(generatedPapersFolder)
         os.mkdir(generatedPapersFolder)
     else:
         os.mkdir(generatedPapersFolder)
+    
+    if os.path.isdir(generatedDocxFolder):
+        shutil.rmtree(generatedDocxFolder)
+        os.mkdir(generatedDocxFolder)
+    else:
+        os.mkdir(generatedDocxFolder)
     
     if os.path.isdir(uploadsFolder):
         shutil.rmtree(uploadsFolder)
@@ -124,9 +131,13 @@ def unsetApp():
     generatedPapersFolder = './static/GeneratedPapers'
     uploadsFolder = './static/Uploads'
     singaturesFolder = './static/Signatures'
+    generatedDocxFolder = './static/GeneratedDocx'
     
     if os.path.isdir(generatedPapersFolder):
         shutil.rmtree(generatedPapersFolder)
+    
+    if os.path.isdir(generatedDocxFolder):
+        shutil.rmtree(generatedDocxFolder)
     
     if os.path.isdir(uploadsFolder):
         shutil.rmtree(uploadsFolder)
@@ -134,11 +145,14 @@ def unsetApp():
     if os.path.isdir(singaturesFolder):
         shutil.rmtree(singaturesFolder)
     
-    init_pycache()
     if os.path.isfile('database.db'):
         os.remove('database.db')
+    
     if os.path.isfile('LogBook.txt'):
         os.remove('LogBook.txt')
+    
+    init_pycache()
+
 
 if __name__ == '__main__':
     init_dirs()
