@@ -126,11 +126,11 @@
             <form action="{{ url_for('download_pdf_without_paperId') }}" method="post">
                 <button type="submit" class="btn">Download as PDF</button>
             </form>
-            <form action="{{ url_for('send_for_approval') }}" method="post">
-                <button type="submit" class="btn">Sign and Proceed</button>
-            </form>
             <form action="{{ url_for('docxDownload') }}" method="post">
                 <button type="submit" class="btn">Download DOCX</button>
+            </form>
+            <form action="{{ url_for('send_for_approval') }}" method="post">
+                <button type="submit" class="btn">Sign and Proceed</button>
             </form>
             <form action="{{ url_for('discardPaper') }}" method="post">
                 <button type="submit" class="btn">Discard Paper</button>
