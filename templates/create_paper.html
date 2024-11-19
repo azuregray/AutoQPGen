@@ -8,7 +8,9 @@
 </head>
 <body>
     <header>
-        <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        <a href="{{ url_for('profile') }}">
+            <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        </a>
         <h1>Create New Question Paper</h1>
     </header>
     <div class="container">
@@ -19,102 +21,103 @@
         </form>
         {% if facultyName and subjectName and subjectCode and semester and questions and co_list and levels and departmentName %}
             <h2 id="generated_info">Question Paper design: </h2>
-            <form action="{{ url_for('savePaper') }}" method="post" style="max-width: 1000px;">
+            <form action="{{ url_for('savePaper') }}" method="post" style="max-width: 1000px; font-family: 'Times New Roman', Times, serif;">
                 <div class="header" style="text-align: center;">
                     <div style="display: inline-flex; align-items: center;">
                         <h1 style="margin: 0;">IA -</h1>
-                        <input type="text" name="cieNumber" value="01" required style="margin-left: 10px; font-size: 1.5rem; font-weight: bold;">
+                        <input type="text" name="cieNumber" value="01" required style="margin-left: 10px; font-size: 1.5rem; font-weight: bold; width: auto; display: inline;">
                     </div>
                 </div>
                 <div class="tablediv">
-                    <table id="generated_table">
+                    <table id="generated_table" style="font-family: 'Times New Roman', Times, serif;">
                         <tr>
                             <td colspan="1">Dept: <input type="text" class="form_input_text" name="departmentName" value="{{ departmentName }}" required></td>
                             <td colspan="1">Sem / Div: <input type="text" class="form_input_text" name="semester" value="{{ semester }}" required></td>
                             <td colspan="3">Course: <input type="text" class="form_input_text" name="courseName" value="{{ subjectName }}" required></td>
-                            <td colspan="1">Elective: <input type="text" class="form_input_text" name="electiveChoice" value="NO" required></td>
+                            <td colspan="2">Elective: <input type="text" class="form_input_text" name="electiveChoice" value="NO" required></td>
                         </tr>
                         <tr>
                             <td colspan="1">Date: <input type="text" class="form_input_text" name="date" value="" required></td>
                             <td colspan="1">Time: <input type="text" class="form_input_text" name="timings" value="" required></td>
                             <td colspan="3">C Code: <input type="text" class="form_input_text" name="courseCode" value="{{ subjectCode }}" required></td>
-                            <td colspan="1">Max Marks: <input type="text" class="form_input_text" name="maxMarks" value="40" required></td>
+                            <td colspan="2">Max Marks: <input type="text" class="form_input_text" name="maxMarks" value="40" required></td>
                         </tr>
                         <tr>
-                            <td colspan="6" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text" class="form_input_text" name="mandatoryCount" value="TWO" required> full questions. All questions carry 20 marks.</td>
+                            <td colspan="7" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text" class="form_input_text" name="mandatoryCount" value="TWO" style="width: auto; display: inline;" required> full questions. All questions carry 20 marks.</td>
                         </tr>
                         <tr class="column_headers">
-                            <td colspan="1" style="text-align:center; font-weight=bold;">QNo.</td>
-                            <td colspan="2" style="text-align:center; font-weight=bold;">Questions</td>
-                            <td colspan="1" style="text-align:center; font-weight=bold;">CO</td>
-                            <td colspan="1" style="text-align:center; font-weight=bold;">Level</td>
-                            <td colspan="1" style="text-align:center; font-weight=bold;">Marks</td>
+                            <th>QNo.</th>
+                            <th colspan="2">Questions</th>
+                            <th>CO</th>
+                            <th>Level</th>
+                            <th>Marks</th>
+                            <th>Module</th>
                         </tr>
                         <tr>
-                            <td colspan="1" rowspan="2" style="text-align:center;">1</td>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q1a" value="a. {{ questions[0] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co1a" value="{{ co_list[0] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl1a" value="{{ levels[0] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks1a" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module1a" value="{{ modules[0] }}" required></td>
+                            <td rowspan="2" style="text-align:center;">1</td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q1a" value="a. {{ questions[0] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co1a" value="{{ co_list[0] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl1a" value="{{ levels[0] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks1a" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module1a" value="{{ modules[0] }}" required></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q1b" value="b. {{ questions[1] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co1b" value="{{ co_list[1] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl1b" value="{{ levels[1] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks1b" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module1b" value="{{ modules[1] }}" required></td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q1b" value="b. {{ questions[1] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co1b" value="{{ co_list[1] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl1b" value="{{ levels[1] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks1b" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module1b" value="{{ modules[1] }}" required></td>
                         </tr>
                         <tr>
-                            <td style="text-align:center;" colspan="6">OR</td>
+                            <td style="text-align:center;" colspan="7">OR</td>
                         </tr>
                         <tr>
-                            <td colspan="1" rowspan="2" style="text-align:center;">2</td>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q2a" value="a. {{ questions[2] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co2a" value="{{ co_list[2] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl2a" value="{{ levels[2] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks2a" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module2a" value="{{ modules[2] }}" required></td>
+                            <td rowspan="2" style="text-align:center;">2</td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q2a" value="a. {{ questions[2] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co2a" value="{{ co_list[2] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl2a" value="{{ levels[2] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks2a" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module2a" value="{{ modules[2] }}" required></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q2b" value="b. {{ questions[3] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co2b" value="{{ co_list[3] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl2b" value="{{ levels[3] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks2b" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module2b" value="{{ modules[3] }}" required></td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q2b" value="b. {{ questions[3] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co2b" value="{{ co_list[3] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl2b" value="{{ levels[3] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks2b" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module2b" value="{{ modules[3] }}" required></td>
                         </tr>
                         <tr>
-                            <td colspan="1" rowspan="2" style="text-align:center;">3</td>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q3a" value="a. {{ questions[4] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co3a" value="{{ co_list[4] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl3a" value="{{ levels[4] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks3a" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module3a" value="{{ modules[4] }}" required></td>
+                            <td rowspan="2" style="text-align:center;">3</td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q3a" value="a. {{ questions[4] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co3a" value="{{ co_list[4] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl3a" value="{{ levels[4] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks3a" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module3a" value="{{ modules[4] }}" required></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q3b" value="b. {{ questions[5] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co3b" value="{{ co_list[5] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl3b" value="{{ levels[5] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks3b" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module3b" value="{{ modules[5] }}" required></td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q3b" value="b. {{ questions[5] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co3b" value="{{ co_list[5] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl3b" value="{{ levels[5] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks3b" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module3b" value="{{ modules[5] }}" required></td>
                         </tr>
                         <tr>
-                            <td style="text-align:center;" colspan="6">OR</td>
+                            <td style="text-align:center;" colspan="7">OR</td>
                         </tr>
                         <tr>
-                            <td colspan="1" rowspan="2" style="text-align:center;">4</td>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q4a" value="a. {{ questions[6] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co4a" value="{{ co_list[6] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl4a" value="{{ levels[6] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks4a" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module4a" value="{{ modules[6] }}" required></td>
+                            <td rowspan="2" style="text-align:center;">4</td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q4a" value="a. {{ questions[6] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co4a" value="{{ co_list[6] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl4a" value="{{ levels[6] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks4a" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module4a" value="{{ modules[6] }}" required></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="text" class="form_input_text" name="q4b" value="b. {{ questions[7] }}" style="width: 500px; height: 50px" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="co4b" value="{{ co_list[7] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="lvl4b" value="{{ levels[7] }}" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="marks4b" value="10" required></td>
-                            <td colspan="1" style="text-align:center;"><input type="text" class="form_input_text" name="module4b" value="{{ modules[7] }}" required></td>
+                            <td colspan="2"><input type="text" class="form_input_text" name="q4b" value="b. {{ questions[7] }}" style="width: 90%; height: 50px" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="co4b" value="{{ co_list[7] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="lvl4b" value="{{ levels[7] }}" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="marks4b" value="10" required></td>
+                            <td style="text-align:center;"><input type="text" class="form_input_text" name="module4b" value="{{ modules[7] }}" required></td>
                         </tr>
                     </table>
                 </div>
@@ -125,6 +128,12 @@
             </form>
             <form action="{{ url_for('send_for_approval') }}" method="post">
                 <button type="submit" class="btn">Sign and Proceed</button>
+            </form>
+            <form action="{{ url_for('docxDownload') }}" method="post">
+                <button type="submit" class="btn">Download DOCX</button>
+            </form>
+            <form action="{{ url_for('discardPaper') }}" method="post">
+                <button type="submit" class="btn">Discard Paper</button>
             </form>
         {% endif %}
     </div>

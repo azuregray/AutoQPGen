@@ -2,13 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for, session, s
 from pathlib import Path
 from models.QScanEngine import QScanExport
 from models.QpprEmbedderEngine import QpprExport
+from models.DocxDownloader import docxSaver
 import kickstarter
 from fpdf import FPDF
 import sqlite3
 import os
 from datetime import datetime
 import secrets
-import random
+import glob
 
 app = Flask(__name__)
 app.secret_key = 'no-cookie-implementation-yet'
@@ -61,6 +62,14 @@ def database_save_paper(userId, paperId, cieNumber, departmentName, semester, co
         ''', (userId, paperId, status, cieNumber, departmentName, semester, courseName, electiveChoice, date, timings, courseCode, maxMarks, mandatoryCount, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b))
         conn.commit()
 
+def database_delete_paper(paperId):
+    with sqlite3.connect('database.db') as conn:
+            cursor = conn.cursor()
+            cursor.execute('DELETE FROM papers WHERE paperId = ?', (paperId,))
+            conn.commit()
+    
+    print(f"\n\n[EVENT] [{getEventLogTime()}] Paper with PaperID {paperId} was deleted.")
+
 def getEventLogTime():
     return datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
 
@@ -76,6 +85,15 @@ def getPaper(paperId):
         paperData = cursor.fetchone()
 
     return paperData
+
+def deletePaperRemains(paperId):
+    pattern = f'*{paperId}*.docx'
+    generatedDocxFolder = './static/GeneratedDocx'
+    pattern_path = os.path.join(generatedDocxFolder, pattern)
+    for filePath in glob.glob(pattern_path):
+        if os.path.exists(filePath):
+            os.remove(filePath)
+            print(f"\n\n[EVENT] [{getEventLogTime()}] DOCX Remains of PaperID {paperId} was cleared from GeneratedDocx Folder.")
 
 def get_greeting():
     hourOfDay = datetime.now().hour
@@ -321,6 +339,21 @@ def status():
             cursor.execute('SELECT * FROM papers')
             papers = cursor.fetchall()
         return render_template('status.html', papers=papers, priolvl=priorityLevel)
+
+
+@app.route('/docxDownload', methods=['POST'])
+def docxDownload():
+    paperId = global_paperId
+    paperData = getPaper(paperId)
+    docxOutputPath = docxSaver(paperData)
+    return send_file(docxOutputPath, as_attachment=True)
+
+@app.route('/discardPaper', methods=['POST'])
+def discardPaper():
+    paperId = global_paperId
+    database_delete_paper(paperId)
+    deletePaperRemains(paperId)
+    return redirect(url_for('profile'))
 
 if __name__ == '__main__':
     kickstarter.init_db()

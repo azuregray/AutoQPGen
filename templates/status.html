@@ -8,11 +8,13 @@
 </head>
 <body>
     <header>
-        <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        <a href="{{ url_for('profile') }}">
+            <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
+        </a>
         <h1>Status</h1>
     </header>
     <div class="container">
-        <h2>Submitted Papers</h2>
+        <h2>Previous Papers</h2>
         <ul class="papers">
             {% for paper in papers %}
                 <li>
