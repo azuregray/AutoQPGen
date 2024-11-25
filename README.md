@@ -3,8 +3,6 @@
 
 # **A U T O &emsp; Q P &emsp; G E N**</p>
 
-![SKIT EMBLEM](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
-
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
 #### `DESCRIPTION` &ensp; An Institution-wide Automation-driven Assessment Creation and Management Platform.
