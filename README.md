@@ -1,9 +1,9 @@
-<p align="center"><a href="https://github.com/azuregray/AutoQPGen" target="_blank"><img width="350"src="https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png"></a></p>
+![AUTOQPGEN_LOGO](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png)
 
 
-# &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; **A U T O &emsp; Q P &emsp; G E N**</p>
+# **A U T O &emsp; Q P &emsp; G E N**</p>
 
-<p align="center"><a href="https://github.com/azuregray/AutoQPGen" target="_blank"><img width="150"src="https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg"></a></p>
+![SKIT EMBLEM](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
 
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
