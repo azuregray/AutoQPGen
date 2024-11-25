@@ -5,9 +5,11 @@
 
 #### `DESCRIPTION` &ensp; An Institution-wide Automation-driven Assessment Creation and Management Platform.
 
-### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
-
 #### `PROJECT DURATION` &ensp; June 2024 - November 2024 (5 Months)
+
+<br>
+
+### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
 > **`Final Year Project 2021 Batch`** 💙
 
