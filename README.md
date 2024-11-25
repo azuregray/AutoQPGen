@@ -1,11 +1,11 @@
 ![AUTOQPGEN_LOGO](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png)
 
 
-# **A U T O &emsp; Q P &emsp; G E N**</p>
-
-### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
+# **A U T O &emsp; Q P &emsp; G E N**
 
 #### `DESCRIPTION` &ensp; An Institution-wide Automation-driven Assessment Creation and Management Platform.
+
+### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
 #### `PROJECT DURATION` &ensp; June 2024 - November 2024 (5 Months)
 
