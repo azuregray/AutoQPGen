@@ -1,6 +1,10 @@
-# **A U T O &emsp; Q P &emsp; G E N**
+<p align="center"><a href="https://github.com/azuregray/AutoQPGen" target="_blank"><img width="350"src="https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png"></a></p>
 
-![SKIT Emblem](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg)
+
+# &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; **A U T O &emsp; Q P &emsp; G E N**</p>
+
+<p align="center"><a href="https://github.com/azuregray/AutoQPGen" target="_blank"><img width="150"src="https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/SKIT_Emblem.jpg"></a></p>
+
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
 #### `DESCRIPTION` &ensp; An Institution-wide Automation-driven Assessment Creation and Management Platform.
