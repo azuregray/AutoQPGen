@@ -1,4 +1,4 @@
-![AUTOQPGEN_LOGO](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png)
+![AUTOQPGEN_LOGO](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover_BlackTransparent.png)
 
 
 # **A U T O &emsp; Q P &emsp; G E N**</p>
