@@ -10,8 +10,7 @@ def init_db():
                 userName TEXT UNIQUE NOT NULL,
                 password TEXT NOT NULL,
                 department TEXT NOT NULL,
-                priorityLevel TEXT NOT NULL,
-                signaturePath TEXT NOT NULL
+                priorityLevel TEXT NOT NULL
             )
         ''')
         cursor.execute('''
@@ -79,7 +78,6 @@ def init_db():
 def init_dirs():
     generatedPapersFolder = './static/GeneratedPapers'
     uploadsFolder = './static/Uploads'
-    singaturesFolder = './static/Signatures'
     generatedDocxFolder = './static/GeneratedDocx'
     
     if os.path.isdir(generatedPapersFolder):
@@ -99,12 +97,7 @@ def init_dirs():
         os.mkdir(uploadsFolder)
     else:
         os.mkdir(uploadsFolder)
-    
-    if os.path.isdir(singaturesFolder):
-        shutil.rmtree(singaturesFolder)
-        os.mkdir(singaturesFolder)
-    else:
-        os.mkdir(singaturesFolder)
+
 
 def init_logBook():
     logFilePath = 'LogBook.txt'
@@ -130,7 +123,6 @@ def resetApp():
 def unsetApp():
     generatedPapersFolder = './static/GeneratedPapers'
     uploadsFolder = './static/Uploads'
-    singaturesFolder = './static/Signatures'
     generatedDocxFolder = './static/GeneratedDocx'
     
     if os.path.isdir(generatedPapersFolder):
@@ -141,9 +133,6 @@ def unsetApp():
     
     if os.path.isdir(uploadsFolder):
         shutil.rmtree(uploadsFolder)
-    
-    if os.path.isdir(singaturesFolder):
-        shutil.rmtree(singaturesFolder)
     
     if os.path.isfile('database.db'):
         os.remove('database.db')

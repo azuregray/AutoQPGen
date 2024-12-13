@@ -14,7 +14,6 @@ import glob
 app = Flask(__name__)
 app.secret_key = 'no-cookie-implementation-yet'
 app.config['UPLOAD_FOLDER'] = 'static/Uploads'
-app.config['SIGNATURES_FOLDER'] = 'static/Signatures'
 
 # Global variables
 # With the implementation of global varaibles, I'd like to clarify that this project
@@ -23,7 +22,6 @@ global global_userId
 global global_userName
 global global_department
 global global_priorityLevel
-global global_signaturePath
 global global_paperId
 
 # Initializing global variables
@@ -31,25 +29,17 @@ global_userId = ""
 global_userName = ""
 global_department = ""
 global_priorityLevel = ""
-global_signaturePath = ""
 global_paperId = ""
 
-# def login_required(f):              # Login Watchdog Function
-#     def wrapper(*args, **kwargs):
-#         if not session.get('logged_in'):  # Check if the user is logged in
-#             return redirect(url_for('login'))  # Redirect to login if not
-#         return f(*args, **kwargs)
-#     wrapper.__name__ = f.__name__
-#     return wrapper
 
 # SOME IMPORTANT FUNCTIONS
-def database_register_user(userId, userName, password, department, priorityLevel, signaturePath):
+def database_register_user(userId, userName, password, department, priorityLevel):
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
         cursor.execute('''
-            INSERT INTO users (userId, userName, password, department, priorityLevel, signaturePath)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (userId, userName, password, department, priorityLevel, signaturePath))
+            INSERT INTO users (userId, userName, password, department, priorityLevel)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (userId, userName, password, department, priorityLevel))
         conn.commit()
 
 def database_save_paper(userId, paperId, cieNumber, departmentName, semester, courseName, electiveChoice, date, timings, courseCode, maxMarks, mandatoryCount, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b):
@@ -118,12 +108,7 @@ def register():
         password = request.form['password']
         department = request.form['department']
         priorityLevel = request.form['priority']
-        signature = request.files['signature']
-
-        signaturePath = os.path.join(app.config['SIGNATURES_FOLDER'], Path(signature.filename))    # should not get from UPLOAD_FOLDER
-        signature.save(signaturePath)
-
-        database_register_user(userId, userName, password, department, priorityLevel, signaturePath)
+        database_register_user(userId, userName, password, department, priorityLevel)
 
         return redirect(url_for('login'))
 
@@ -135,7 +120,6 @@ def login():
     global global_userName
     global global_department
     global global_priorityLevel
-    global global_signaturePath
     if request.method == 'POST':
         userName = request.form['username']
         password = request.form['password']
@@ -148,7 +132,6 @@ def login():
                 global_userName = user[2]
                 global_department = user[4]
                 global_priorityLevel = user[5]
-                global_signaturePath = user[6]
                 return redirect(url_for('profile'))
             else:
                 return 'Invalid Credentials 🚫 Please go back and perform a valid login 🙏'
