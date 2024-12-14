@@ -3,8 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Design</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Create Paper - AutoQPGen</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --text-color: #2c3e50;
+            --button-color: #27ae60;
+            --button-hover: #2ecc71;
+            --button-danger: #e74c3c;
+            --button-danger-hover: #c0392b;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('{{ url_for('static', filename='BgPhoto/college_background.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: rgba(52, 152, 219, 0.9);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logout-btn {
+            background-color: var(--button-danger);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--button-danger-hover);
+        }
+
+        .container {
+            flex-grow: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type="file"] {
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        button:hover::before {
+            width: 100%;
+        }
+
+        button[type="submit"] {
+            background-color: var(--button-color);
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        form:last-of-type button {
+            background-color: var(--button-danger);
+        }
+
+        form:last-of-type button:hover {
+            background-color: var(--button-danger-hover);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .form_input_text {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        footer {
+            background-color: rgba(52, 152, 219, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #f39c12;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,6 +212,7 @@
             <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
         </a>
         <h1>Create New Question Paper</h1>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
     </header>
     <div class="container">
         <form action="{{ url_for('create_paper') }}" method="post" enctype="multipart/form-data">
@@ -43,7 +244,7 @@
                             <td colspan="2">Max Marks: <input type="text" class="form_input_text" name="maxMarks" value="40" required></td>
                         </tr>
                         <tr>
-                            <td colspan="7" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text" class="form_input_text" name="mandatoryCount" value="TWO" style="width: auto; display: inline;" required> full questions. All questions carry 20 marks.</td>
+                            <td colspan="7<td colspan="7" style="font-weight: bold; text-align: center">Note: Answer ANY <input type="text" class="form_input_text" name="mandatoryCount" value="TWO" style="width: auto; display: inline;" required> full questions. All questions carry 20 marks.</td>
                         </tr>
                         <tr class="column_headers">
                             <th>QNo.</th>
@@ -140,5 +341,29 @@
     <footer>
         <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+                
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -4,7 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --text-color: #2c3e50;
+            --input-bg: #ffffff;
+            --input-border: #bdc3c7;
+            --button-hover: #e74c3c;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('{{ url_for('static', filename='BgPhoto/college_background.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: rgba(52, 152, 219, 0.9);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-height: 50px;
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        input[type="file"] {
+            border: none;
+            padding: 0.5rem 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: rgba(52, 152, 219, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #f39c12;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,7 +166,7 @@
         <h1>Register</h1>
     </header>
     <div class="container">
-        <form action="{{ url_for('register') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url_for('register') }}" method="post" enctype="multipart/form-data" id="registerForm">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
             
@@ -23,7 +175,7 @@
             
             <label for="department">Department</label>
             <select id="department" name="department" required>
-                <option disabled selected>Please select a Department</option>
+                <option value="" disabled selected>Please select a Department</option>
                 <option value="MGMT">Management / Principal</option>
                 <option value="AIML">AIML</option>
                 <option value="CSE">CSE</option>
@@ -34,16 +186,51 @@
             
             <label for="priority">Priority Level:</label>
             <select id="priority" name="priority" required>
-                <option disabled selected>Please select a Level</option>
+                <option value="" disabled selected>Please select a Level</option>
                 <option value="STAFF">Teaching staff</option>
                 <option value="HOD">Head of the department</option>
                 <option value="MGMT">Management / Principal</option>
             </select>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitButton">Submit</button>
         </form>
     </div>
     <footer>
         <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registerForm');
+            const submitButton = document.getElementById('submitButton');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+                submitButton.style.opacity = '0.7';
+
+                // Simulate form submission (remove this in production)
+                setTimeout(function() {
+                    form.submit();
+                }, 1000);
+            });
+
+            submitButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+
+            submitButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+
+            submitButton.addEventListener('mousedown', function() {
+                this.style.transform = 'translateY(-1px)';
+            });
+
+            submitButton.addEventListener('mouseup', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+        });
+    </script>
 </body>
 </html>

@@ -338,6 +338,10 @@ def discardPaper():
     deletePaperRemains(paperId)
     return redirect(url_for('profile'))
 
+@app.route('/logout')
+def logout():
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     kickstarter.init_db()
     kickstarter.init_dirs()

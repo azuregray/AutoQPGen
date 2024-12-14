@@ -3,34 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Status - AutoQPGen</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --text-color: #2c3e50;
+            --button-color: #27ae60;
+            --button-hover: #2ecc71;
+            --button-reject: #e74c3c;
+            --button-reject-hover: #c0392b;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('{{ url_for('static', filename='BgPhoto/college_background.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: rgba(52, 152, 219, 0.9);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logout-btn {
+            background-color: var(--button-reject);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--button-reject-hover);
+        }
+
+        .container {
+            flex-grow: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .papers {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .papers li {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .papers li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .papers li span {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        form {
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: all 0.6s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        .download-btn {
+            background-color: var(--button-color);
+        }
+
+        .download-btn:hover {
+            background-color: var(--button-hover);
+        }
+
+        .approve-btn {
+            background-color: var(--primary-color);
+        }
+
+        .approve-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .reject-btn {
+            background-color: var(--button-reject);
+        }
+
+        .reject-btn:hover {
+            background-color: var(--button-reject-hover);
+        }
+
+        footer {
+            background-color: rgba(52, 152, 219, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #f39c12;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
         <a href="{{ url_for('profile') }}">
             <img src="{{ url_for('static', filename='college_logo.png') }}" alt="College Logo">
         </a>
-        <h1>Status</h1>
+        <h1>Question Paper Status</h1>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
     </header>
     <div class="container">
         <h2>Previous Papers</h2>
         <ul class="papers">
             {% for paper in papers %}
                 <li>
-                    <span> PaperID: {{ paper[2] }} - {{ paper[11] }} - {{ paper[7] }} Status: {{ paper[3] }} </span>
+                    <span>PaperID: {{ paper[2] }} - {{ paper[11] }} - {{ paper[7] }} Status: {{ paper[3] }}</span>
                     <form action="{{ url_for('download_pdf_with_paperId', paperId=paper[2]) }}" method="post">
-                        <button type="submit">Download Paper</button>
+                        <button type="submit" class="download-btn">Download Paper</button>
                     </form>
                     {% if priolvl == 'HOD' %}
                         {% if paper[3] == 'Paper Rejected ⛔' or 'Forwarded for HOD Approval.' %}
                             <form action="{{ url_for('paper_status_approved', paperId=paper[2]) }}" method="post">
-                                <button type="submit"> Approve Paper </button>
+                                <button type="submit" class="approve-btn">Approve Paper</button>
                             </form>
                         {% endif %}
                         {% if paper[3] == 'Paper Approved ✅' or 'Forwarded for HOD Approval.' %}
                             <form action="{{ url_for('paper_status_rejected', paperId=paper[2]) }}" method="post">
-                                <button type="submit"> Reject Paper </button>
+                                <button type="submit" class="reject-btn">Reject Paper</button>
                             </form>
                         {% endif %}
                     {% endif %}
@@ -41,5 +229,31 @@
     <footer>
         <p>&copy; 2024 - SKIT. All rights reserved. Follow us on <a href="https://facebook.com" target="_blank">Facebook</a>, <a href="https://twitter.com" target="_blank">Twitter</a>, <a href="https://instagram.com" target="_blank">Instagram</a></p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+                
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.95)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

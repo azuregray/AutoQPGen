@@ -77,12 +77,12 @@ python -m pip install --force-reinstall pymupdf
 > **`01`** - To quickly setup the entire project to get it ready to RUN FRESH, feel free to invoke resetApp() from kickstarter.py:  
 > `Interpreter: PowerShell`
 ```
-python -c "import kickstarter; kickstarter.resetApp()"
+python -c "import kickstarter; kickstarter.readyApp()"
 ```
 > **`02`** - To quickly setup the entire project to get it ready to SHARE with Team or GITHUB PUSH, feel free to invoke unsetApp() from kickstarter.py:  
 > `Interpreter: PowerShell`
 ```
-python -c "import kickstarter; kickstarter.unsetApp()"
+python -c "import kickstarter; kickstarter.offloadApp()"
 ```
 ---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰

@@ -114,13 +114,13 @@ def init_pycache():
     if os.path.exists(pycache_models):
         shutil.rmtree(pycache_models)
 
-def resetApp():
+def readyApp():
     init_dirs()
     init_db()
     init_logBook()
     init_pycache()
 
-def unsetApp():
+def offloadApp():
     generatedPapersFolder = './static/GeneratedPapers'
     uploadsFolder = './static/Uploads'
     generatedDocxFolder = './static/GeneratedDocx'
