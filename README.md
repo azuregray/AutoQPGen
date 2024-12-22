@@ -3,7 +3,7 @@
 
 # **A U T O &emsp; Q P &emsp; G E N**
 
-#### `DESCRIPTION` &ensp; An Institution-wide Automation-driven Assessment Creation and Management Platform.
+#### `DESCRIPTION` &ensp; An Institution-wide Assessment Creation and Management Platform.
 
 #### `PROJECT DURATION` &ensp; June 2024 - November 2024 (5 Months)
 
