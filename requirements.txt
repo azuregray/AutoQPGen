@@ -3,7 +3,6 @@ fitz
 PyPDF2
 flask
 pathlib
-fpdf
 tools
 frontend
 secrets
@@ -11,3 +10,4 @@ spacy
 docxtpl
 docx2pdf
 tk
+pywin32

@@ -5,8 +5,6 @@
 
 #### `DESCRIPTION` &ensp; An Institution-wide Assessment Creation and Management Platform.
 
-#### `PROJECT DURATION` &ensp; June 2024 - November 2024 (5 Months)
-
 <br>
 
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
@@ -74,12 +72,12 @@ python -m pip install --force-reinstall pymupdf
 > Refer [PyMuPDF/issues](https://github.com/pymupdf/PyMuPDF/issues/660) for more information on the same.
 ---
 ### **`QUICK TIPS`**
-> **`01`** - To quickly setup the entire project to get it ready to RUN FRESH, feel free to invoke resetApp() from kickstarter.py:  
+> **`01`** - To quickly setup the entire project to get it ready to RUN FRESH, feel free to invoke readyApp() from kickstarter.py:  
 > `Interpreter: PowerShell`
 ```
 python -c "import kickstarter; kickstarter.readyApp()"
 ```
-> **`02`** - To quickly setup the entire project to get it ready to SHARE with Team or GITHUB PUSH, feel free to invoke unsetApp() from kickstarter.py:  
+> **`02`** - To quickly setup the entire project to get it ready to SHARE with Team or GITHUB PUSH, feel free to invoke offloadApp() from kickstarter.py:  
 > `Interpreter: PowerShell`
 ```
 python -c "import kickstarter; kickstarter.offloadApp()"

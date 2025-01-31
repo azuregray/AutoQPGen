@@ -222,7 +222,7 @@
         </form>
         {% if facultyName and subjectName and subjectCode and semester and questions and co_list and levels and departmentName %}
             <h2 id="generated_info">Question Paper design: </h2>
-            <form action="{{ url_for('savePaper') }}" method="post" style="max-width: 1000px; font-family: 'Times New Roman', Times, serif;">
+            <form id="savePaperForm" action="{{ url_for('savePaper') }}" method="POST" style="max-width: 1000px; font-family: 'Times New Roman', Times, serif;">
                 <div class="header" style="text-align: center;">
                     <div style="display: inline-flex; align-items: center;">
                         <h1 style="margin: 0;">IA -</h1>
@@ -322,7 +322,7 @@
                         </tr>
                     </table>
                 </div>
-                <button type="submit" class="btn">Save Paper</button>
+                <button id="saveButton" type="submit" class="btn">Save Paper</button>
             </form>
             <form action="{{ url_for('download_pdf_without_paperId') }}" method="post">
                 <button type="submit" class="btn">Download as PDF</button>
@@ -362,6 +362,33 @@
                 button.addEventListener('mouseup', function() {
                     this.style.transform = 'scale(1)';
                 });
+            });
+        });
+
+        const savePaperForm = document.getElementById('savePaperForm');
+        const saveButton = document.getElementById('saveButton');
+
+        savePaperForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            saveButton.disabled = true;
+            saveButton.textContent = "Submitting...";
+
+            fetch("{{ url_for('savePaper') }}", {
+                method: 'POST',
+                body: new FormData(savePaperForm)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                saveButton.disabled = true;
+                saveButton.textContent = "PAPER SAVED";
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                alert('An error occurred during submission.');
+                saveButton.disabled = false;
+                saveButton.textContent = "Save Paper";
             });
         });
     </script>

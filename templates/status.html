@@ -13,6 +13,8 @@
             --button-hover: #2ecc71;
             --button-reject: #e74c3c;
             --button-reject-hover: #c0392b;
+            --button-delete: #000000;
+            --button-delete-hover: #282828;
         }
 
         body {
@@ -173,6 +175,14 @@
             background-color: var(--button-reject-hover);
         }
 
+        .delete-btn {
+            background-color: var(--button-delete);
+        }
+
+        .delete-btn:hover {
+            background-color: var(--button-delete-hover);
+        }
+
         footer {
             background-color: rgba(52, 152, 219, 0.9);
             color: white;
@@ -211,17 +221,28 @@
                         <button type="submit" class="download-btn">Download Paper</button>
                     </form>
                     {% if priolvl == 'HOD' %}
-                        {% if paper[3] == 'Paper Rejected ⛔' or 'Forwarded for HOD Approval.' %}
+                        {% if paper[3] == 'Forwarded for HOD Approval.' %}
+                            <form action="{{ url_for('paper_status_approved', paperId=paper[2]) }}" method="post">
+                                <button type="submit" class="approve-btn">Approve Paper</button>
+                            </form>
+                            <form action="{{ url_for('paper_status_rejected', paperId=paper[2]) }}" method="post">
+                                <button type="submit" class="reject-btn">Reject Paper</button>
+                            </form>
+                        {% endif %}
+                        {% if paper[3] == 'Paper Rejected ⛔' %}
                             <form action="{{ url_for('paper_status_approved', paperId=paper[2]) }}" method="post">
                                 <button type="submit" class="approve-btn">Approve Paper</button>
                             </form>
                         {% endif %}
-                        {% if paper[3] == 'Paper Approved ✅' or 'Forwarded for HOD Approval.' %}
+                        {% if paper[3] == 'Paper Approved ✅' %}
                             <form action="{{ url_for('paper_status_rejected', paperId=paper[2]) }}" method="post">
                                 <button type="submit" class="reject-btn">Reject Paper</button>
                             </form>
                         {% endif %}
                     {% endif %}
+                    <form action="{{ url_for('deletePaper_with_paperID', paperId=paper[2]) }}" method="post">
+                        <button id="deleteButton" type="submit" class="delete-btn">Delete Paper</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
@@ -233,7 +254,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('button');
-            
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-3px)';
@@ -251,6 +271,23 @@
                 
                 button.addEventListener('mouseup', function() {
                     this.style.transform = 'scale(1)';
+                });
+            });
+
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const paperId = this.closest('form').action.split('/').pop();
+
+                    fetch(this.closest('form').action, { // Use form's action
+                        method: 'POST'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        window.location.href = window.location.href; // Reload the current page
+                    });
                 });
             });
         });

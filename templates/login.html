@@ -178,15 +178,28 @@
             const loginButton = document.getElementById('loginButton');
             const loginForm = document.getElementById('loginForm');
 
-            loginButton.addEventListener('click', function(e) {
-                e.preventDefault();
+            loginForm.addEventListener('submit', function(e) { // Listen for form submit
+                e.preventDefault(); // Prevent default form submission
+
                 loginButton.textContent = 'Logging in...';
                 loginButton.disabled = true;
 
-                // Simulate form submission (remove this in production)
-                setTimeout(function() {
-                    loginForm.submit();
-                }, 1000);
+                fetch(loginForm.action, { // Use form's action attribute
+                    method: loginForm.method,
+                    body: new FormData(loginForm)
+                })
+                .then(response => {
+                    if (response.redirected) { // Check if redirected
+                        window.location.href = response.url; // Follow the redirect
+                        return; // Stop further processing
+                    }
+                    return response.json(); // Otherwise, assume JSON error
+                })
+                .then(data => { // Handle JSON error
+                    alert(data.message);
+                    loginButton.textContent = 'Login'; // Reset button text
+                    loginButton.disabled = false; // Re-enable button
+                })
             });
 
             loginButton.addEventListener('mouseenter', function() {

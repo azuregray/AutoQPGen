@@ -11,7 +11,7 @@ def QpprExport(paperData):
     courseCode = paperDataDictionary['courseCode']
     uniqueNameFactor = paperDataDictionary['paperId']
     
-    templatePath = './static/DocxTemplates/QuestionPaperTemplate_10_5.docx'
+    templatePath = './static/DocxTemplates/QuestionPaperTemplate_10_10.docx'
     questionPaperPreName = courseCode + "__" + uniqueNameFactor + ".docx"
     questionPaperPreOutputPath = './static/GeneratedDocx/' + questionPaperPreName
     questionPaperName = courseCode + "__" + uniqueNameFactor + ".pdf"

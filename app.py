@@ -1,21 +1,24 @@
-from flask import Flask, render_template, request, redirect, url_for, session, send_file
+# LIBRARY IMPORTS
+from flask import Flask, render_template, request, redirect, url_for, session, send_file, Response, jsonify
 from pathlib import Path
-from models.QScanEngine import QScanExport
-from models.QpprEmbedderEngine import QpprExport
-from models.DocxDownloader import docxSaver
-import kickstarter
-from fpdf import FPDF
 import sqlite3
 import os
 from datetime import datetime
 import secrets
-import glob
 
+# LOCAL IMPORTS
+from models.QScanEngine import QScanExport
+from models.QpprEmbedderEngine import QpprExport
+from models.DocxDownloader import docxSaver
+import kickstarter
+
+# FLASK HEADSTART
 app = Flask(__name__)
 app.secret_key = 'no-cookie-implementation-yet'
 app.config['UPLOAD_FOLDER'] = 'static/Uploads'
 
-# Global variables
+
+# GLOBAL VARIABLES START HERE
 # With the implementation of global varaibles, I'd like to clarify that this project
 # was never planned for parallel sessions (multiple users using it at the same time. You can try though :) )
 global global_userId
@@ -23,8 +26,6 @@ global global_userName
 global global_department
 global global_priorityLevel
 global global_paperId
-
-# Initializing global variables
 global_userId = ""
 global_userName = ""
 global_department = ""
@@ -32,7 +33,7 @@ global_priorityLevel = ""
 global_paperId = ""
 
 
-# SOME IMPORTANT FUNCTIONS
+# HELPER FUNCTIONS START HERE
 def database_register_user(userId, userName, password, department, priorityLevel):
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
@@ -58,15 +59,23 @@ def database_delete_paper(paperId):
             cursor.execute('DELETE FROM papers WHERE paperId = ?', (paperId,))
             conn.commit()
     
-    print(f"\n\n[EVENT] [{getEventLogTime()}] Paper with PaperID {paperId} was deleted.")
+    eventLogger(f"Paper with PaperID {paperId} was DELETED.")
 
 def getEventLogTime():
     return datetime.now().strftime("%B %d, %Y %I:%M:%S %p")
 
 def eventLogger(logText):
-    logText = "\n" + str(logText)
-    with open("LogBook.txt", "a") as file:
-        file.write(logText)
+    logBook = './LogBook.txt'
+    print(f"\n\n[EVENT] [{getEventLogTime()}] {logText}\n\n")
+    first_entry = not os.path.exists(logBook) or os.stat(logBook).st_size == 0
+    try:
+        with open(logBook, "a") as f: # "a" mode for appending
+            if not first_entry:
+                f.write("\n\n")
+            f.write(f'[EVENT] [{getEventLogTime()}] {logText}')
+            f.write("\n")
+    except Exception as e:
+        print(f"An error occurred while writing to logbook: {e}")
 
 def getPaper(paperId):
     with sqlite3.connect('database.db') as conn:
@@ -77,13 +86,32 @@ def getPaper(paperId):
     return paperData
 
 def deletePaperRemains(paperId):
-    pattern = f'*{paperId}*.docx'
+    generatedPapersFolder = './static/GeneratedPapers'
     generatedDocxFolder = './static/GeneratedDocx'
-    pattern_path = os.path.join(generatedDocxFolder, pattern)
-    for filePath in glob.glob(pattern_path):
-        if os.path.exists(filePath):
-            os.remove(filePath)
-            print(f"\n\n[EVENT] [{getEventLogTime()}] DOCX Remains of PaperID {paperId} was cleared from GeneratedDocx Folder.")
+    docxFileFound = search_for_file(generatedDocxFolder, paperId, '.docx')
+    pdfFileFound = search_for_file(generatedPapersFolder, paperId, '.pdf')
+    if docxFileFound is not None:
+        os.remove(docxFileFound)
+    if pdfFileFound is not None:
+        os.remove(pdfFileFound)
+    eventLogger(f'DOCX and PDF Remains of PaperID {paperId} were cleared.')
+
+def search_for_file(directory, keyword, extension):
+    found = False
+    for filename in os.listdir(directory):
+        if filename.endswith(extension) and keyword in filename:
+            found = True
+            return filename
+    if not found:
+        return None
+
+def deleteQBanks():
+    uploadsFolder = './static/Uploads/'
+    for filename in os.listdir(uploadsFolder):
+        if filename.endswith('.pdf'):
+            file_path = os.path.join(uploadsFolder, filename)
+            os.remove(file_path)
+    eventLogger('Uploaded Question banks have been cleared.')
 
 def get_greeting():
     hourOfDay = datetime.now().hour
@@ -96,6 +124,9 @@ def get_greeting():
     
     return greeting
 
+
+
+## APP ROUTES START HERE
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -134,7 +165,7 @@ def login():
                 global_priorityLevel = user[5]
                 return redirect(url_for('profile'))
             else:
-                return 'Invalid Credentials 🚫 Please go back and perform a valid login 🙏'
+                return jsonify({'message': 'Invalid Credentials. Please perform a valid login!'})
     return render_template('login.html')
 
 @app.route('/profile')
@@ -184,22 +215,32 @@ def create_paper():
 @app.route('/download_pdf_without_paperId', methods=['POST'])
 def download_pdf_without_paperId():
     global global_paperId
-    paperData = getPaper(global_paperId)
-    print("\n\n\n[DEBUG LOG] Paper Data Generated by SQLite3 cursor is as follows:\n", paperData, "\n\n\n")
-    pdf_output_path = QpprExport(paperData)
+    directory = './static/GeneratedPapers'
+    foundFileName = search_for_file(directory, global_paperId, '.pdf')
+    if foundFileName is not None:
+        pdf_output_path = os.path.join(directory, foundFileName)
+    else:
+        paperData = getPaper(global_paperId)
+        pdf_output_path = QpprExport(paperData)
     return send_file(pdf_output_path, as_attachment=True)
 
 @app.route('/download_pdf_with_paperId/<paperId>', methods=['POST'])
 def download_pdf_with_paperId(paperId):
-    paperData = getPaper(paperId)
-    pdf_output_path = QpprExport(paperData)
+    directory = './static/GeneratedPapers'
+    foundFileName = search_for_file(directory, paperId, '.pdf')
+    if foundFileName is not None:
+        pdf_output_path = os.path.join(directory, foundFileName)
+    else:
+        paperData = getPaper(paperId)
+        pdf_output_path = QpprExport(paperData)
     return send_file(pdf_output_path, as_attachment=True)
+
 
 @app.route('/savePaper', methods=['POST'])
 def savePaper():
     global global_paperId
     global_paperId = secrets.token_hex(4)
-    print(f"\n\n[EVENT] [{getEventLogTime()}] New PaperID generated: {global_paperId}\n\n")
+    eventLogger(f"New PaperID generated: {global_paperId}")
     paperId = global_paperId
     userId = global_userId
     cieNumber = request.form['cieNumber']
@@ -254,12 +295,14 @@ def savePaper():
     module4b = request.form['module4b']
     
     database_save_paper(userId, paperId, cieNumber, departmentName, semester, courseName, electiveChoice, date, timings, courseCode, maxMarks, mandatoryCount, q1a, co1a, lvl1a, marks1a, module1a, q1b, co1b, lvl1b, marks1b, module1b, q2a, co2a, lvl2a, marks2a, module2a, q2b, co2b, lvl2b, marks2b, module2b, q3a, co3a, lvl3a, marks3a, module3a, q3b, co3b, lvl3b, marks3b, module3b, q4a, co4a, lvl4a, marks4a, module4a, q4b, co4b, lvl4b, marks4b, module4b)
-    return ""
+    deleteQBanks()
+    return jsonify({'message': f'{courseCode} Paper with paperID {global_paperId} has been saved!'})
+    # return ""
 
 @app.route('/send_for_approval', methods=['POST'])
 def send_for_approval():
     paperId = global_paperId
-    print(f"\n\n[EVENT] [{getEventLogTime()}] PaperID {paperId} has been created and sent for HOD Approval.\n\n")
+    eventLogger(f"PaperID {paperId} has been created and sent for HOD Approval.")
     status = "Forwarded for HOD Approval."
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
@@ -271,7 +314,7 @@ def send_for_approval():
 
 @app.route('/paper_status_approved/<paperId>', methods=['POST'])
 def paper_status_approved(paperId):
-    print(f"\n\n[EVENT] [{getEventLogTime()}] Question paper of PaperID {paperId} was APPROVED.\n\n")
+    eventLogger(f"Question paper of PaperID {paperId} was APPROVED.")
     status = "Paper Approved ✅"
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
@@ -283,7 +326,7 @@ def paper_status_approved(paperId):
 
 @app.route('/paper_status_rejected/<paperId>', methods=['POST'])
 def paper_status_rejected(paperId):
-    print(f"\n\n[EVENT] [{getEventLogTime()}] Question paper of PaperID {paperId} was REJECTED.\n\n")
+    eventLogger(f"Question paper of PaperID {paperId} was REJECTED.")
     status = "Paper Rejected ⛔"
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
@@ -323,12 +366,16 @@ def status():
             papers = cursor.fetchall()
         return render_template('status.html', papers=papers, priolvl=priorityLevel)
 
-
 @app.route('/docxDownload', methods=['POST'])
 def docxDownload():
     paperId = global_paperId
-    paperData = getPaper(paperId)
-    docxOutputPath = docxSaver(paperData)
+    directory = './static/GeneratedDocx/'
+    foundFileName = search_for_file(directory, paperId, '.docx')
+    if foundFileName is not None:
+        docxOutputPath = os.path.join(directory, foundFileName)
+    else:
+        paperData = getPaper(paperId)
+        docxOutputPath = docxSaver(paperData)
     return send_file(docxOutputPath, as_attachment=True)
 
 @app.route('/discardPaper', methods=['POST'])
@@ -338,15 +385,26 @@ def discardPaper():
     deletePaperRemains(paperId)
     return redirect(url_for('profile'))
 
+@app.route('/deletePaper_with_paperID/<paperId>', methods=['POST'])
+def deletePaper_with_paperID(paperId):
+    usePaperId = paperId
+    database_delete_paper(usePaperId)
+    deletePaperRemains(usePaperId)
+    return jsonify({'message': f'Paper {usePaperId} and all its remains have been deleted.'})
+
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
 
+
+
+# ACTUAL EXECUTION STARTS HERE
 if __name__ == '__main__':
-    kickstarter.init_db()
-    kickstarter.init_dirs()
-    kickstarter.init_logBook()
+    kickstarter.init_db() # Works only when the session is never previously run (when the database does not exist) (DOES NOT INITIALIZE THE DATABASE!!)
+    kickstarter.init_dirs() # Clears all the materials uploaded or created during previous session operations.
+    kickstarter.init_logBook() # Clears ./LogBook.txt to clear all Logs.
     # kickstarter.init_pycache()
     
-    #app.run(host="Powershell::ipconfig::IPv4Address", port=5000, debug=True)   # This runs the app server on specified IPv4 Address and port
-    app.run(debug=True)     # This by default runs the app server on localhost 127.0.0.1:5000
+    # To run the app server on specified IPv4 Address and port (FOR REMOTE ACCESS):
+    # app.run(host="Powershell::ipconfig::IPv4Address", port=5000, debug=True)
+    app.run(debug=True) # This by default runs the app server on localhost 127.0.0.1:5000
