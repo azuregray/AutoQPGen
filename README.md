@@ -5,8 +5,6 @@
 
 #### `DESCRIPTION` &ensp; An Institution-wide Assessment Creation and Management Platform.
 
-<br>
-
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
 > **`Final Year Project 2021 Batch`** 💙
