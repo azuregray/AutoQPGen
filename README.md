@@ -25,16 +25,16 @@
 **`( GITHUB )`** **`( PIP )`** **`( MARKDOWN )`**  
 **`( SHELL SCRIPTING )`** **`( POWERSHELL )`** **`( PYTORCH )`**  
 **`( TENSORFLOW )`** **`( PDF RENDERING )`** **`( NLP )`**  
-**`( SPACY )`**
+**`( SPACY )`** **`(PDF Structured Extraction)`**
 
 ---
 ## **`DEPLOYMENT & USAGE`**
-> 1️⃣ **Step 01**: Please visit the Original Repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Downlaoad ZIP".  
+> 1️⃣ **Step 01**: Please visit the Original Repository [**`AutoQPGen`**](https://github.com/azuregray/AutoQPGen) and find the Green `CODE` button and click on "Download ZIP".  
 > or just [**`Click here to download`**](https://github.com/azuregray/AutoQPGen/archive/refs/heads/main.zip).
 
 > 2️⃣ **Step 02**: Extract the downloaded `AutoQPGen-main.zip` file into its folder and open the same.
 
-> 3️⃣ **Step 03**: Once you are in the repo folder, Install the requirements.  
+> 3️⃣ **Step 03**: Once you are in the folder, Install the requirements.  
 > To take the help of `requirements.txt`, just run this in Terminal:  
 > `Interpreter: PowerShell`
 ```
@@ -59,15 +59,6 @@ python ./app.py
 > 7️⃣ **Step 07**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`.  
 > For example: `https://127.0.0.1:5000`
 
----
-### **`DEPENDENCY ISSUE`**
-> We have noticed that there is a general bug in PyMuPDF library which can give the following error: `Attribute Error : fitz has no attribute open()`. If you faced the same, please do not panic!  
-> Since fitz is just a wrapper for PyMuPDF library, this error can be fixed easily by force-reinstalling PyMuPDF with the following command in your Terminal:  
-> `Interpreter: PowerShell`
-```
-python -m pip install --force-reinstall pymupdf
-```
-> Refer [PyMuPDF/issues](https://github.com/pymupdf/PyMuPDF/issues/660) for more information on the same.
 ---
 ### **`QUICK TIPS`**
 > **`01`** - To quickly setup the entire project to get it ready to RUN FRESH, feel free to invoke readyApp() from kickstarter.py:  

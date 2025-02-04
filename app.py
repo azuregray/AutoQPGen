@@ -90,9 +90,9 @@ def deletePaperRemains(paperId):
     generatedDocxFolder = './static/GeneratedDocx'
     docxFileFound = search_for_file(generatedDocxFolder, paperId, '.docx')
     pdfFileFound = search_for_file(generatedPapersFolder, paperId, '.pdf')
-    if docxFileFound is not None:
+    if docxFileFound is not None and os.path.exists(docxFileFound):
         os.remove(docxFileFound)
-    if pdfFileFound is not None:
+    if pdfFileFound is not None and os.path.exists(pdfFileFound):
         os.remove(pdfFileFound)
     eventLogger(f'DOCX and PDF Remains of PaperID {paperId} were cleared.')
 

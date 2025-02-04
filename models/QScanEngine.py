@@ -1,4 +1,4 @@
-import fitz
+import pdfplumber
 import random
 import re
 import spacy
@@ -18,7 +18,7 @@ def clean_question_text(question_text):
     return finalText
 
 def questionSetter(listOfDictionaries, howMany):
-    uniqueModNums = list(set(item['modnum'] for item in listOfDictionaries)) # Finding unique module numbers using FUNDAMENTAL PROPERTY OF SETS
+    uniqueModNums = sorted(list(set(item['modnum'] for item in listOfDictionaries))) # Finding unique module numbers using FUNDAMENTAL PROPERTY OF SETS
     
     sorted_list = sorted(listOfDictionaries, key=lambda x: x['modnum']) # Sorting structured quesitions data based on ModuleNumber values
     
@@ -31,11 +31,9 @@ def questionSetter(listOfDictionaries, howMany):
     return firstModGroup[:howMany // 2] + secondModGroup[:howMany // 2] # Return ListOfDictionaries required n questions by joining first n/2 items from each list
 
 def extract_text_from_pdf(pdf_path):
-    with fitz.open(pdf_path) as pdf:
-        text = ""
-        for page in pdf:
-            text += page.get_text()
-    return text
+    with pdfplumber.open(pdf_path) as pdf:
+        text = "\n".join([page.extract_text() for page in pdf.pages])
+        return text
 
 # Function to extract information from text using spaCy NER model
 def extract_info_with_ner(text):
@@ -46,8 +44,8 @@ def extract_info_with_ner(text):
         "facultyName": None,
         "qBankContent": []
     }
-    subjectName = re.search(r"Subject Name:\s*(.*)", text)
-    subjectCode = re.search(r"Subject Code:\s*(\S+)", text)
+    subjectName = re.search(r"Subject Name\s*:\s*(.*)", text)
+    subjectCode = re.search(r"Subject Code\s*:\s*(\S+)", text)
     semester = re.search(r"SEM\s*:\s*(\S+)", text)
     facultyName = re.search(r"Faculty\s*:\s*(.*)", text)
     
