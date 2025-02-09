@@ -64,6 +64,31 @@ python -c "import kickstarter; kickstarter.readyApp()"
 ```
 python -c "import kickstarter; kickstarter.offloadApp()"
 ```
+
+---
+### **`CRITICAL GUIDELINES FOR QUESTION BANK CREATION`**
+> You can find the official Question Bank format that AutoQPGen supports at /Assets/SampleQuestionBanks/Template/
+
+> **`01`** - It is highly recommended that you use the provided Template DOCX file to make new Question Banks.  
+
+> **`02`** - Make sure you have either a period "." or a Closed Paranthesis ")" immediately next to Sl. No. in each row.  
+
+> **`03`** - It is recommended to not have any extra text in between the pages / tables / rows as that may interfere with the data extraction.  
+
+> **`04`** - It is important that CO and Levels column entries are accompanied by prefixes such as "CO" and "L" respectively.  
+
+> **`05`** - You can have as many question as you like per module but just make sure all the entries are filled to avoid unintended errors.  
+
+> **`06`** - Be very cautious to ensure that each question bank has not more than TWO modules.  
+
+> **`07`** - AutoQPGen system gives priority to the Module field in each row rather than the sub-header that is mentioned before each table so make sure that is filled to ensure your question ends up in the right module.  
+
+---
+### **`A SMALL NOTE`**
+> As for the scope of the project, we have only included only One variant of question paper template in /static/DocxTemplates.
+
+> Any new templates or change in template here may require corresponding changes in /models/DocxDownloader.py and a user-side mechanism for selection of desired Question Paper template out of the available ones at runtime during question bank creation.  
+
 ---
 ## **`FOR RESPECTED CONTRIBUTORS`** 🔰
 > Please refer the [**`OFFICIAL GITHUB CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
