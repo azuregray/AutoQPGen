@@ -81,7 +81,15 @@ python -c "import kickstarter; kickstarter.offloadApp()"
 
 > **`06`** - Be very cautious to ensure that each question bank has not more than TWO modules.  
 
-> **`07`** - AutoQPGen system gives priority to the Module field in each row rather than the sub-header that is mentioned before each table so make sure that is filled to ensure your question ends up in the right module.  
+> **`07`** - AutoQPGen system gives priority to the Module field in each row rather than the sub-header that is mentioned before each table so make sure that is filled to ensure your question ends up in the right module.
+
+> **`08`** - As the system is text-based, Diagrams or Figures or Images in Question Bank are currently not supported.  
+
+> **`09`** - Please note that, we stand against any changes to Question Bank elements other than the three dots "..." when using the provided template, and take no responsibility if the question bank deems to be unsupported as a result of these actions.  
+
+> **`10`** - It is equally important to note that "Faculty:" is the correct field name for faculty detail in input Question Bank.     
+
+> **`11`** - It is recommended to enable borders the hidden table structure for the pre-details such as Subject, Sem & Faculty Details section and then re-disable the borders for the same after desired edits.  
 
 ---
 ### **`A SMALL NOTE`**
