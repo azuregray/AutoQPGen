@@ -9,7 +9,7 @@
 
 > **`Final Year Project 2021 Batch`** 💙
 
-> **`Department of Artificial Intelligence & Machine Learning` - Sri Krishna Institute of Technology, Bangalore**
+> **`Department of AI & ML` - Sri Krishna Institute of Technology, Bangalore**
 ---
 ## **`SKILLS LEARNT / TECHNOLOGIES USED`**
 **`( HTML5 )`** **`( CSS3 )`** **`( JAVASCRIPT )`**  
