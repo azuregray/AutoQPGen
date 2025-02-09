@@ -1,4 +1,4 @@
-![AUTOQPGEN_LOGO](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png)
+![AutoQPGen_Branding-Logo](https://raw.githubusercontent.com/azuregray/AutoQPGen/main/Assets/AutoQPGen_GitHubSocialMediaCover.png)
 
 
 # **A U T O &emsp; Q P &emsp; G E N**
@@ -9,7 +9,7 @@
 
 > **`Final Year Project 2021 Batch`** 💙
 
-> **Department of AI & ML - Sri Krishna Institute of Technology, Bangalore**
+> **`Department of Artificial Intelligence & Machine Learning` - Sri Krishna Institute of Technology, Bangalore**
 ---
 ## **`SKILLS LEARNT / TECHNOLOGIES USED`**
 **`( HTML5 )`** **`( CSS3 )`** **`( JAVASCRIPT )`**  
@@ -67,7 +67,7 @@ python -c "import kickstarter; kickstarter.offloadApp()"
 
 ---
 ### **`CRITICAL GUIDELINES FOR QUESTION BANK CREATION`**
-> You can find the official Question Bank format that AutoQPGen supports at /Assets/SampleQuestionBanks/Template/
+> You can find the official Question Bank format that AutoQPGen supports at `/Assets/SampleQuestionBanks/Template/`
 
 > **`01`** - It is highly recommended that you use the provided Template DOCX file to make new Question Banks.  
 
@@ -93,16 +93,29 @@ python -c "import kickstarter; kickstarter.offloadApp()"
 
 ---
 ### **`A SMALL NOTE`**
-> As for the scope of the project, we have only included only One variant of question paper template in /static/DocxTemplates.
+> As for the scope of the project, we have only included only One variant of question paper template in `/static/DocxTemplates`.  
 
-> Any new templates or change in template here may require corresponding changes in /models/DocxDownloader.py and a user-side mechanism for selection of desired Question Paper template out of the available ones at runtime during question bank creation.  
+> Any new templates or change in template here may require corresponding changes in `/models/DocxDownloader.py` and a user-side mechanism for selection of desired Question Paper template out of the available ones at runtime during question bank creation.  
 
 ---
-## **`FOR RESPECTED CONTRIBUTORS`** 🔰
+### ⚠️ **`DISCLAIMER - LEGAL - LICENSED REPOSITORY`** 
+> Entire Project Code, Detailed Report and corresponding Research Paper have been published and recognized in ISBN Approved Journal - **`International Journal of Creative Research Thoughts (IJCRT)`** which are inturn highly affiliated to **`University Grants Commission (UGC)`** and **`Univeral Creative Commons Research (UCCR)`** Legal Entities.  
+
+> As a result, This repository has been moved from previous GNU General Public License to now applicable **`Creative Commons Zero Universal Legal Code v1.0 (CC0-1.0 License)`** which has certain limitations on modified usage and mainly related to Patenting, Commercial/Private Use. Refer the same before any actions.  
+
+> Article Viewable at [**`PAPERID::IJCRT2502184`**](https://ijcrt.org/papers/IJCRT2502184.pdf) or [**`TEXT-BASED ARTICLE`**](https://ijcrt.org/viewfulltext.php?&p_id=IJCRT2502184).  
+
+> As this project is heavily monitored by us - Authors and our institution, We highly recommend using the below **Cite Phrase** wherever the project code or paper is used including any possbile working modifications:  
+```
+Darshan S,  Chethan Gowda M V,  Prof. Manzoor Ahmed,   "AutoQPGen - Automatic Question Paper Generator", International Journal of Creative Research Thoughts (IJCRT), ISSN:2320-2882, Volume.13, Issue 2, pp.b489-b505, February 2025, Available at :http://www.ijcrt.org/papers/IJCRT2502184.pdf
+```
+
+---
+## 🔰 **`FOR RESPECTED CONTRIBUTORS`** 
 > Please refer the [**`OFFICIAL GITHUB CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
 ---
 
-## **`LINK TO THE ORIGINAL REPOSITORY`** ✅
+## ✅ **`LINK TO THE ORIGINAL REPOSITORY`** 
 
 > **https://github.com/azuregray/AutoQPGen/**
 
