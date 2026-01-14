@@ -98,7 +98,7 @@ python -c "import kickstarter; kickstarter.offloadApp()"
 > Any new templates or change in template here may require corresponding changes in `/models/DocxDownloader.py` and a user-side mechanism for selection of desired Question Paper template out of the available ones at runtime during question bank creation.  
 
 ---
-### ⚠️ **`DISCLAIMER - LEGAL - LICENSED REPOSITORY`** 
+### 🔰 **`SPECIAL NOTE`** 
 > Entire Project Code, Detailed Report and corresponding Research Paper have been published and recognized in ISBN Approved Journal - **`International Journal of Creative Research Thoughts (IJCRT)`** which are inturn highly affiliated to **`University Grants Commission (UGC)`** and **`Univeral Creative Commons Research (UCCR)`** Legal Entities.  
 
 > As a result, This repository has been moved from previous GNU General Public License to now applicable **`Creative Commons Zero Universal Legal Code v1.0 (CC0-1.0 License)`** which has certain limitations on modified usage and mainly related to Patenting, Commercial/Private Use. Refer the same before any actions.  
@@ -111,7 +111,7 @@ Darshan S,  Chethan Gowda M V,  Prof. Manzoor Ahmed,   "AutoQPGen - Automatic Qu
 ```
 
 ---
-## 🔰 **`FOR RESPECTED CONTRIBUTORS`** 
+## 🏅 **`FOR RESPECTED CONTRIBUTORS`** 
 > Please refer the [**`OFFICIAL GITHUB CONTRIBUTION GUIDE`**](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) 
 ---
 
