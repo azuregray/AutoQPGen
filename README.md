@@ -105,7 +105,7 @@ python -c "import kickstarter; kickstarter.offloadApp()"
 
 > Article Viewable at [**`PAPERID::IJCRT2502184`**](https://ijcrt.org/papers/IJCRT2502184.pdf) or [**`TEXT-BASED ARTICLE`**](https://ijcrt.org/viewfulltext.php?&p_id=IJCRT2502184).  
 
-> As this project is heavily monitored by us - Authors and our institution, We highly recommend using the below **Cite Phrase** wherever the project code or paper is used including any possbile working modifications:  
+> Please use the below **Cite Phrase** wherever the project code or paper is used including any possbile working modifications:  
 ```
 Darshan S,  Chethan Gowda M V,  Prof. Manzoor Ahmed,   "AutoQPGen - Automatic Question Paper Generator", International Journal of Creative Research Thoughts (IJCRT), ISSN:2320-2882, Volume.13, Issue 2, pp.b489-b505, February 2025, Available at :http://www.ijcrt.org/papers/IJCRT2502184.pdf
 ```
