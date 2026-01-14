@@ -3,7 +3,7 @@
 
 # **A U T O &emsp; Q P &emsp; G E N**
 
-#### `DESCRIPTION` &ensp; An Institution-wide Assessment Creation and Management Platform.
+#### `DESCRIPTION` &ensp; An NLP-Based Institution-wide Assessment Creation and Management Platform.
 
 ### **`SRI KRISHNA INSTITUTE OF TECHNOLOGY`**
 
