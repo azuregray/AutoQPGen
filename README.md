@@ -9,15 +9,15 @@
 
 > **`Final Year Project 2021 Batch`** 💙
 
-> **`Department of AI & ML` - Sri Krishna Institute of Technology, Bangalore**
+> **`Department of AI & ML` - Visvesvaraya Technological University, Belagavi**
 ---
 ## **`SKILLS LEARNT / TECHNOLOGIES USED`**
 **`( HTML5 )`** **`( CSS3 )`** **`( JAVASCRIPT )`**  
 **`( PYTHON )`** **`( FLASK )`** **`( SECRETS )`**  
-**`( DJANGO )`** **`( SQLITE )`** **`( GIT )`**  
+**`( DJANGO HTML )`** **`( SQLITE )`** **`( GIT )`**  
 **`( GITHUB )`** **`( PIP )`** **`( MARKDOWN )`**  
-**`( SHELL SCRIPTING )`** **`( POWERSHELL )`** **`( PYTORCH )`**  
-**`( TENSORFLOW )`** **`( PDF RENDERING )`** **`( NLP )`**  
+**`( SHELL SCRIPTING )`** **`( POWERSHELL )`**
+**`( PDF RENDERING )`** **`( NLP )`**  
 **`( SPACY )`** **`(PDF Structured Extraction)`**
 
 ---
@@ -50,7 +50,7 @@ python ./app.py
 ```
 
 > 7️⃣ **Step 07**: After running the command in `Step 06`, please do a `Ctrl + Click` on the localhost URL where the service is being hosted, which is generated in the same terminal windows running `app.py`.  
-> For example: `https://127.0.0.1:5000`
+> For example: `https://localhost:5000`
 
 ---
 ### **`QUICK TIPS`**
