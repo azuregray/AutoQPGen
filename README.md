@@ -16,7 +16,7 @@
 **`( PYTHON )`** **`( FLASK )`** **`( SECRETS )`**  
 **`( DJANGO HTML )`** **`( SQLITE )`** **`( GIT )`**  
 **`( GITHUB )`** **`( PIP )`** **`( MARKDOWN )`**  
-**`( SHELL SCRIPTING )`** **`( POWERSHELL )`**
+**`( SHELL SCRIPTING )`** **`( POWERSHELL )`**  
 **`( PDF RENDERING )`** **`( NLP )`**  
 **`( SPACY )`** **`(PDF Structured Extraction)`**
 
